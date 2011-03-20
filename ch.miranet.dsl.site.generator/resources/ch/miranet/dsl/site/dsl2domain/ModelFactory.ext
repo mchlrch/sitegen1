@@ -1,5 +1,6 @@
 import siteDomain;
 
+extension ch::miranet::dsl::site::domain::Date;
 // extension org::eclipse::xtend::util::stdlib::io;
 
 create Model this toDomainModel(Collection[siteDsl::ModelElement] dslElements):
@@ -19,11 +20,15 @@ create PostMetaData this toDomainPostMetaData(siteDsl::PostMetaData dslMetaData)
 	setGroup(dslMetaData.group.toDomainPostGroup()) ->
 	setTitle(dslMetaData.title) ->
 	setRefTitle(dslMetaData.refTitle) ->
-	setCreatedAt(dslMetaData.createdAt);
+	setCreatedAt(dslMetaData.createdAt.toDomainDate());
 
 create PostGroup toDomainPostGroup(siteDsl::PostGroup dslPostGroup):
 	setName(dslPostGroup.name);
 
+create Date toDomainDate(siteDsl::Date dslDate):
+	setYear(dslDate.year) ->
+	setMonth(dslDate.month) ->
+	setDay(dslDate.day);
 
 create SimpleContent this toDomainSimpleContent(siteDsl::SimpleContent dslContent):
 	setName(dslContent.name) ->
@@ -35,7 +40,7 @@ create SimpleContentMetaData this toDomainSimpleContentMetaData(siteDsl::SimpleC
 	setRefTitle(dslMetaData.refTitle);
 	
 
-private List[Post] toDomainPosts(Collection[siteDsl::Post] dslPosts) :
-	dslPosts.sortBy(post|post.metaData.createdAt).reverse().toDomainPost();
-	
-	
+private List[Post] toDomainPosts(Collection[siteDsl::Post] dslPosts):
+	dslPosts.sortBy(post|post.metaData.createdAt.format()).reverse().toDomainPost();
+
+private format(siteDsl::Date date): format(date.year, date.month, date.day);

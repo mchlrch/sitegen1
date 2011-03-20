@@ -36,9 +36,10 @@ body {
 }
 
 .navi li {
-	font-size: 1.2em;
+	font-size: 1.4em;
 	text-transform: lowercase;
-	float: right;
+	float: right;	
+	font-style: bold;
 }
 
 .navi li a:link, .navi li a:visited {

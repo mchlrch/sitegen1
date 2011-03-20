@@ -1,3 +1,5 @@
+import siteGenmodel;
+import siteDomain;
 import ch::miranet::dsl::site::siteGenmodel;
 import ch::miranet::dsl::site::siteDomain;
 
@@ -7,10 +9,8 @@ String asString(File file):
 Page primaryPage(Post post, Site site):
 	site.pages.body.typeSelect(PostView).selectFirst(body|body.viewType == PostViewType::FULL && body.post == post).page;
 	
-/* duplicate of definition in SiteFactory.ext --> troubles with imports in ext, if Page.ext is imported in SiteFactory.ext
 Page page(SimpleContent content, Site site):
 	site.pages.body.typeSelect(SimpleContentView).selectFirst(body|body.content == content).page;
-*/
 	
 String relativePathTo(Page sourcePage, Page targetPage):
 	sourcePage.path.relativePathTo(targetPage.path);

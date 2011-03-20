@@ -25,8 +25,9 @@
         eOpposite="#//PostGroup/posts"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="refTitle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createdAt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="post" eType="#//Post" eOpposite="#//Post/metaData"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="createdAt" eType="#//Date"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PostGroup">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -50,5 +51,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="refTitle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="content" eType="#//SimpleContent"
         eOpposite="#//SimpleContent/metaData"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Date">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="year" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="month" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="day" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>

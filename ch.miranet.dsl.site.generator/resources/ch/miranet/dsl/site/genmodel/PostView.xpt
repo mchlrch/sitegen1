@@ -3,13 +3,14 @@
 
 «EXTENSION ch::miranet::dsl::site::genmodel::Page»
 «EXTENSION ch::miranet::dsl::site::domain::Post»
+«EXTENSION ch::miranet::dsl::site::domain::Date»
 
 
 «DEFINE fullView FOR PostView-»
 «LET this.post.metaData AS metaData»
 <div class="content">
 <h2><a href="«this.page.relativePathTo(this.page)»" rel="bookmark" title="Permanent Link to «metaData.title»">«metaData.title»</a></h2>
-<small>«metaData.createdAt» by «this.post.author()»</small>
+<small>«metaData.createdAt.format()» by «this.post.author()»</small>
 
 «this.post.intro»
 «this.post.body»
@@ -23,7 +24,7 @@
 «LET this.post.metaData AS metaData»
 <div class="content">
 <h2>«metaData.title»</h2>
-<small>«metaData.createdAt» by «this.post.author()»</small>
+<small>«metaData.createdAt.format()» by «this.post.author()»</small>
 
 «this.post.intro»
 

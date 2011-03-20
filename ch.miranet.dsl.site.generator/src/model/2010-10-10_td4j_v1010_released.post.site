@@ -3,7 +3,7 @@ post support_companion_objects (
   group:    td4j
   title:    "Added support for companion objects in td4j"
   refTitle: "Support for companion objects"
-  created:  "2010-07-06"
+  created:  2010-07-06
   tags:     td4j, java, projectUpdates
   path:     "posts/2010/07/06/added-support-for-companion-objects-in-td4j/"
 ) [[BODY
@@ -27,7 +27,7 @@ post td4j_v1010_released (
   group:    td4j
   title:    "td4j 10.10 released"
   refTitle: "v10.10 released"
-  created:  "2010-10-10"
+  created:  2010-10-10
 //  tags:     td4j, java, projectUpdates
 ) [[INTRO
 <p>This new release includes two major features:

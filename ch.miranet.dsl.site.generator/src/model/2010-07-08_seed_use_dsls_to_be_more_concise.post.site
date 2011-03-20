@@ -2,7 +2,7 @@ post seed_use_dsls_to_be_more_concise (
   group:    seed
   title:    "Use DSLs to be more concise"
   refTitle: "Use DSLs to be more concise"
-  created:  "2010-07-08"
+  created:  2010-07-08
 //  tags:     td4j, java, projectUpdates
 //  path:     "posts/2010/07/08/use-dsls-to-be-more-concise/"
 ) [[BODY

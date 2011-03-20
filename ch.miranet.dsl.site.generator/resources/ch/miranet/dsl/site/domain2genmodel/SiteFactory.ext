@@ -2,7 +2,8 @@ import siteDomain;
 import siteGenmodel;
 
 extension ch::miranet::dsl::site::domain2genmodel::PageFooterFactory;
-/* problematic import  extension ch::miranet::dsl::site::genmodel::Page;  */
+extension ch::miranet::dsl::site::domain::Date;
+extension ch::miranet::dsl::site::genmodel::Page;
 
 create Site this toSite(Model model):
 	setDocumentRoot(createDocumentRoot()) ->
@@ -47,9 +48,6 @@ create PageHeader this createPageHeader(Site site):
 	setStylesheet(site.documentRoot.createChild("static").createChild("css").createChild("style.css")) ->
 	navigationEntries.add(site.home) ->
 	navigationEntries.addAll(site.domainModel.simpleContentEntryPoints.page(site));
-
-private Page page(SimpleContent content, Site site):
-	site.pages.body.typeSelect(SimpleContentView).selectFirst(body|body.content == content).page;
 	
 // -------------------------------------------------------------------------
 create DocumentRoot this createDocumentRoot():
@@ -57,9 +55,10 @@ create DocumentRoot this createDocumentRoot():
 	setDepth(0);
 
 create File this createPath(Post post, DocumentRoot docRoot):
-	setParent(docRoot.createChild("posts").createChild(post.metaData.createdAt).createChild(post.name)) ->	
-	setDepth(parent.depth+1) ->
-	setName("index.html");
+	let cDate = post.metaData.createdAt:
+		setParent(docRoot.createChild("posts").createChild(""+cDate.year).createChild(cDate.month.twoDigits()).createChild(cDate.day.twoDigits()).createChild(post.name)) ->	
+		setDepth(parent.depth+1) ->
+		setName("index.html");
 
 create File this createPath(SimpleContent content, DocumentRoot docRoot):
 	setParent(docRoot.createChild("pages").createChild(content.name)) ->	

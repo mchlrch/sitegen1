@@ -20,7 +20,7 @@ PostMetaData:
   	'refTitle:' refTitle=STRING
 //  	('refTitle:' refTitle=STRING)?
 
-  	'created:'  createdAt=STRING
+  	'created:'  createdAt=Date
 	;
 //  	'path:' path=STRING;
   	
@@ -42,6 +42,9 @@ PostGroup:
 	
 ContentEntryPointDefinition: {ContentEntryPointDefinition}
 	'entryPoints' name=ID '(' entryPoints+=[SimpleContent] (',' entryPoints+=[SimpleContent])* ')';
+
+Date:
+	year=INT '-' month=INT '-' day=INT;
 
 terminal INTRO	: '[[INTRO' -> 'INTRO]]';	
 terminal BODY	: '[[BODY' -> 'BODY]]';

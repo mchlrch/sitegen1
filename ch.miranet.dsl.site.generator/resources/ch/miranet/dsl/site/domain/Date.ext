@@ -1,0 +1,8 @@
+import siteDomain;
+import ch::miranet::dsl::site::siteDomain;
+
+format(Date date): format(date.year, date.month, date.day);
+
+format(Integer year, Integer month, Integer day): "" + year + "-" + month.twoDigits() + "-" + day.twoDigits();
+
+twoDigits(Integer n):  n < 10 ? "0" + n : "" + n;
