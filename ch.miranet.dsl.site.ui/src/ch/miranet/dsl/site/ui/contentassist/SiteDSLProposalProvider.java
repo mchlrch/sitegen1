@@ -3,10 +3,9 @@
 */
 package ch.miranet.dsl.site.ui.contentassist;
 
-import ch.miranet.dsl.site.ui.contentassist.AbstractSiteDSLProposalProvider;
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
-public class SiteDSLProposalProvider extends AbstractSiteDSLProposalProvider {
+public class SiteDSLProposalProvider extends AbstractSiteDslProposalProvider {
 
 }

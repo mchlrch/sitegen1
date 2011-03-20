@@ -8,7 +8,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 /**
  * Use this class to register components to be used within the IDE.
  */
-public class SiteDSLUiModule extends ch.miranet.dsl.site.ui.AbstractSiteDSLUiModule {
+public class SiteDSLUiModule extends ch.miranet.dsl.site.ui.AbstractSiteDslUiModule {
 	public SiteDSLUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
