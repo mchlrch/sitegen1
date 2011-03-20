@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="siteDomain"
+    nsURI="http://www.miranet.ch/dsl/site/SiteDomain" nsPrefix="siteDomain">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="posts" upperBound="-1"
+        eType="#//Post" containment="true" eOpposite="#//Post/model"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postGroups" upperBound="-1"
+        eType="#//PostGroup" containment="true" eOpposite="#//PostGroup/model"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="simpleContents" upperBound="-1"
+        eType="#//SimpleContent" containment="true" eOpposite="#//SimpleContent/model"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="simpleContentEntryPoints"
+        upperBound="-1" eType="#//SimpleContent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Post" eSuperTypes="#//Content">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metaData" eType="#//PostMetaData"
+        containment="true" eOpposite="#//PostMetaData/post"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intro" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//Model"
+        eOpposite="#//Model/posts"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PostMetaData">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="group" eType="#//PostGroup"
+        eOpposite="#//PostGroup/posts"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="refTitle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createdAt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="post" eType="#//Post" eOpposite="#//Post/metaData"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PostGroup">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//Model"
+        eOpposite="#//Model/postGroups"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="posts" upperBound="-1"
+        eType="#//PostMetaData" eOpposite="#//PostMetaData/group"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Content" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleContent" eSuperTypes="#//Content">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metaData" eType="#//SimpleContentMetaData"
+        containment="true" eOpposite="#//SimpleContentMetaData/content"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//Model"
+        eOpposite="#//Model/simpleContents"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleContentMetaData">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="refTitle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="content" eType="#//SimpleContent"
+        eOpposite="#//SimpleContent/metaData"/>
+  </eClassifiers>
+</ecore:EPackage>

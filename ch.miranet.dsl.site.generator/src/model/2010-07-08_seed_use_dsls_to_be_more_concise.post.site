@@ -1,0 +1,100 @@
+post seed_use_dsls_to_be_more_concise (
+  group:    seed
+  title:    "Use DSLs to be more concise"
+  refTitle: "Use DSLs to be more concise"
+  created:  "2010-07-08"
+//  tags:     td4j, java, projectUpdates
+//  path:     "posts/2010/07/08/use-dsls-to-be-more-concise/"
+) [[BODY
+<p>Models can be expressed more concise with domain specific languages (<a href="http://www.martinfowler.com/bliki/DomainSpecificLanguage.html">DSL</a>s).</p>
+<p>Creating a textual DSL with <a href="http://www.eclipse.org/Xtext/">Xtext</a> was surprisingly easy.</p>
+
+<p>As an exercise, I created a DSL to describe business processes. My goal was to generate a jPDL file for <a href="http://www.jboss.org/jbpm/">jBPM</a> as end result. I didn&#8217;t aim at complete coverage of jPDL and rather just modeled a small fragment of it.</p>
+<p>Briefly, I wanted to be able to describe <a href="http://docs.jboss.com/jbpm/v4/userguide/html_single/#concurrency">that process from the jBPM User Guide</a>.</p>
+<p>When creating a DSL, one starts with writing down how the language should look like in the end (<em>concurrency.bpm</em>):</p>
+<pre>
+<code><strong>process</strong> ConcurrencyGraphBased {
+
+  <strong>start</strong>
+    -&gt; initial_fork
+
+  <strong>fork</strong> initial_fork
+    -&gt; send_invoice
+    -&gt; load_truck
+    -&gt; print_shipping_documents
+
+  <strong>state</strong> send_invoice
+    -&gt; final_join
+
+  <strong>state</strong> load_truck
+    -&gt; shipping_join
+
+  <strong>state</strong> print_shipping_documents
+    -&gt; shipping_join
+
+  <strong>join</strong> shipping_join
+    -&gt; drive_truck_to_destination
+
+  <strong>state</strong> drive_truck_to_destination
+    -&gt; ok        ? final_join
+    -&gt; breakdown ? end_failed
+
+  <strong>join</strong> final_join
+    -&gt; end_ok
+
+  <strong>end</strong> end_ok
+
+  <strong>end</strong> end_failed 
+
+}</code>
+
+</pre>
+<p>In contrast to the example from the user guide, I also declared state choice:</p>
+<pre>
+<code>  <strong>state</strong> drive_truck_to_destination
+    -&gt; ok        ? final_join
+    -&gt; breakdown ? end_failed</code>
+</pre>
+<p>The Xtext grammar looks like this:</p>
+<pre>
+
+<code>grammar ch.miranet.bpm.dsl.BpmDsl with org.eclipse.xtext.common.Terminals
+
+generate bpmDsl "http://www.miranet.ch/bpm/dsl/BpmDsl"
+
+Process:
+	'process' name=ID '{'
+	start=Start
+	(states+=State)*
+	'}';
+
+Start:
+	'start' '-&gt;' target=[State];
+
+End:
+	'end' name=ID;
+
+State:
+	SimpleState | Fork | Join | End;
+
+Fork:
+	'fork' name=ID ('-&gt;' targets+=[State])+;
+
+Join:
+	'join' name=ID '-&gt;' target=[State];
+
+SimpleState:
+	'state' name=ID
+	('-&gt;' target=[State] | conditionalTargets+=ConditionalTransition+);
+
+ConditionalTransition:
+	'-&gt;' choice=Choice '?' target=[State];
+
+Choice:
+	name=ID;</code>
+</pre>
+<p>To make it complete, here the links to the <a href="http://www.miranet.ch/src/dsl/xtext_workflow/Template.xpt">Xpand template</a> and the <a href="http://www.miranet.ch/src/dsl/xtext_workflow/ConcurrencyGraphBased.xml">resulting jPDL file</a>. </p>
+<p>On top of better readability, one also gets a nice Eclipse based text editor, including code completion and outline. In contrast to the resulting jPDL file, the concurrency.bpm input file has typesafe references.</p>
+
+<p><em>Open Declaration</em> and <em>Find References</em> work the way I&#8217;m used to from writing Java code - very nice, indeed!</p>
+BODY]]

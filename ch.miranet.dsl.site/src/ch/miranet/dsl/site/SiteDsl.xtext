@@ -1,0 +1,47 @@
+grammar ch.miranet.dsl.site.SiteDsl with org.eclipse.xtext.common.Terminals
+
+generate siteDsl "http://www.miranet.ch/dsl/site/SiteDsl"
+
+Model:
+	elements+=ModelElement*;
+	
+ModelElement:
+	Post | PostGroupDefinition | SimpleContent | ContentEntryPointDefinition;
+	
+Post:
+	'post' name=ID '(' metaData=PostMetaData ')'
+     intro=INTRO?	
+	 body=BODY?;
+
+PostMetaData:
+	'group:' group=[PostGroup]
+	'title:' title=STRING
+
+  	'refTitle:' refTitle=STRING
+//  	('refTitle:' refTitle=STRING)?
+
+  	'created:'  createdAt=STRING
+	;
+//  	'path:' path=STRING;
+  	
+
+SimpleContent:
+	'content' name=ID '(' metaData=SimpleContentMetaData ')'
+	 body=BODY?;
+
+SimpleContentMetaData:
+	'title:' title=STRING
+  	'refTitle:' refTitle=STRING;
+  
+	
+PostGroupDefinition: {PostGroupDefinition}
+	'groups' '(' groups+=PostGroup (',' groups+=PostGroup)* ')';	
+	
+PostGroup:
+	name=ID;
+	
+ContentEntryPointDefinition: {ContentEntryPointDefinition}
+	'entryPoints' name=ID '(' entryPoints+=[SimpleContent] (',' entryPoints+=[SimpleContent])* ')';
+
+terminal INTRO	: '[[INTRO' -> 'INTRO]]';	
+terminal BODY	: '[[BODY' -> 'BODY]]';

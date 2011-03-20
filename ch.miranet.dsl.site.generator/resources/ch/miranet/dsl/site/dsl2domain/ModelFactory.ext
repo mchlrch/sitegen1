@@ -1,0 +1,41 @@
+import siteDomain;
+
+// extension org::eclipse::xtend::util::stdlib::io;
+
+create Model this toDomainModel(Collection[siteDsl::ModelElement] dslElements):
+	posts.addAll(dslElements.typeSelect(siteDsl::Post).toDomainPosts()) ->
+	postGroups.addAll(posts.collect(p|p.metaData.group).toSet().sortBy(g|g.name)) ->
+	simpleContents.addAll(dslElements.typeSelect(siteDsl::SimpleContent).toDomainSimpleContent()) ->
+	simpleContentEntryPoints.addAll(dslElements.typeSelect(siteDsl::ContentEntryPointDefinition).first().entryPoints.toDomainSimpleContent());
+
+
+create Post this toDomainPost(siteDsl::Post dslPost):
+	setName(dslPost.name) ->
+	setMetaData(dslPost.metaData.toDomainPostMetaData()) ->
+	setIntro(dslPost.intro) ->
+	setBody(dslPost.body);
+	
+create PostMetaData this toDomainPostMetaData(siteDsl::PostMetaData dslMetaData):
+	setGroup(dslMetaData.group.toDomainPostGroup()) ->
+	setTitle(dslMetaData.title) ->
+	setRefTitle(dslMetaData.refTitle) ->
+	setCreatedAt(dslMetaData.createdAt);
+
+create PostGroup toDomainPostGroup(siteDsl::PostGroup dslPostGroup):
+	setName(dslPostGroup.name);
+
+
+create SimpleContent this toDomainSimpleContent(siteDsl::SimpleContent dslContent):
+	setName(dslContent.name) ->
+	setMetaData(dslContent.metaData.toDomainSimpleContentMetaData()) ->
+	setBody(dslContent.body);
+	
+create SimpleContentMetaData this toDomainSimpleContentMetaData(siteDsl::SimpleContentMetaData dslMetaData):
+	setTitle(dslMetaData.title) ->
+	setRefTitle(dslMetaData.refTitle);
+	
+
+private List[Post] toDomainPosts(Collection[siteDsl::Post] dslPosts) :
+	dslPosts.sortBy(post|post.metaData.createdAt).reverse().toDomainPost();
+	
+	

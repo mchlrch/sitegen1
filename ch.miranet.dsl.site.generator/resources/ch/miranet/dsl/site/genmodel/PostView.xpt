@@ -1,0 +1,34 @@
+«IMPORT ch::miranet::dsl::site::siteGenmodel»
+«IMPORT ch::miranet::dsl::site::siteDomain»
+
+«EXTENSION ch::miranet::dsl::site::genmodel::Page»
+«EXTENSION ch::miranet::dsl::site::domain::Post»
+
+
+«DEFINE fullView FOR PostView-»
+«LET this.post.metaData AS metaData»
+<div class="content">
+<h2><a href="«this.page.relativePathTo(this.page)»" rel="bookmark" title="Permanent Link to «metaData.title»">«metaData.title»</a></h2>
+<small>«metaData.createdAt» by «this.post.author()»</small>
+
+«this.post.intro»
+«this.post.body»
+
+</div> <!-- content -->
+«ENDLET»
+«ENDDEFINE»
+
+
+«DEFINE teaserView FOR PostView-»
+«LET this.post.metaData AS metaData»
+<div class="content">
+<h2>«metaData.title»</h2>
+<small>«metaData.createdAt» by «this.post.author()»</small>
+
+«this.post.intro»
+
+<p><a href="«this.page.relativePathTo(this.post.primaryPage(this.page.site))»">Read the full article</a></p>
+
+</div> <!-- content -->
+«ENDLET»
+«ENDDEFINE»

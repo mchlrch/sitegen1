@@ -1,0 +1,5 @@
+// groups: howto, seed, td4j, projectXY, ...
+
+groups (td4j, seed)
+
+entryPoints navigation (about, project_td4j)

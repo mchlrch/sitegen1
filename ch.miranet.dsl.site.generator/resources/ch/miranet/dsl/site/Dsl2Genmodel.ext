@@ -1,0 +1,5 @@
+extension ch::miranet::dsl::site::dsl2domain::ModelFactory;
+extension ch::miranet::dsl::site::domain2genmodel::SiteFactory;
+
+siteGenmodel::Site createSite(Collection[siteDsl::ModelElement] dslElements):
+	dslElements.toDomainModel().toSite();

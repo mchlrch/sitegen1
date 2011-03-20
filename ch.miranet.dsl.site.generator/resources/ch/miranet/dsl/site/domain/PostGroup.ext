@@ -1,0 +1,4 @@
+import siteDomain;
+
+cached List[Post] postsInGroup(PostGroup postGroup):
+	postGroup.posts.post.sortBy(post|post.metaData.createdAt).reverse();

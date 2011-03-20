@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="siteGenmodel"
+    nsURI="http://www.miranet.ch/dsl/site/SiteGenmodel" nsPrefix="siteGenmodel">
+  <eClassifiers xsi:type="ecore:EClass" name="Page">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" lowerBound="1" eType="#//PageBody"
+        containment="true" eOpposite="#//PageBody/page"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="site" eType="#//Site" eOpposite="#//Site/pages"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="path" eType="#//File"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="refTitle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PageBody" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="page" eType="#//Page" eOpposite="#//Page/body"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PostView" eSuperTypes="#//PageBody">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="post" eType="ecore:EClass ../../ch.miranet.dsl.site.domain/model/SiteDomain.ecore#//Post"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewType" eType="#//PostViewType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PostViewType">
+    <eLiterals name="FULL"/>
+    <eLiterals name="TEASER" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Site">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pages" upperBound="-1"
+        eType="#//Page" containment="true" eOpposite="#//Page/site"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="documentRoot" eType="#//DocumentRoot"
+        containment="true" eOpposite="#//DocumentRoot/site"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pageFooter" eType="#//PageFooter"
+        containment="true" eOpposite="#//PageFooter/site"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domainModel" eType="ecore:EClass ../../ch.miranet.dsl.site.domain/model/SiteDomain.ecore#//Model"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pageHeader" eType="#//PageHeader"
+        containment="true" eOpposite="#//PageHeader/site"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="home" eType="#//Page"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="File">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//File" containment="true" eOpposite="#//File/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//File"
+        eOpposite="#//File/children"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="depth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DocumentRoot" eSuperTypes="#//File">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="site" eType="#//Site" eOpposite="#//Site/documentRoot"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PageFooter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="archiveGroups" upperBound="-1"
+        eType="#//ArchiveGroup" containment="true" eOpposite="#//ArchiveGroup/pageFooter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="site" eType="#//Site" eOpposite="#//Site/pageFooter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArchiveGroup">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="segments" upperBound="-1"
+        eType="#//ArchiveGroupSegment" containment="true" eOpposite="#//ArchiveGroupSegment/archiveGroup"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pageFooter" eType="#//PageFooter"
+        eOpposite="#//PageFooter/archiveGroups"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="postGroup" eType="ecore:EClass ../../ch.miranet.dsl.site.domain/model/SiteDomain.ecore#//PostGroup"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArchiveGroupSegment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="archiveGroup" eType="#//ArchiveGroup"
+        eOpposite="#//ArchiveGroup/segments"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="posts" upperBound="-1"
+        eType="ecore:EClass ../../ch.miranet.dsl.site.domain/model/SiteDomain.ecore#//Post"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PageHeader">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="site" eType="#//Site" eOpposite="#//Site/pageHeader"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stylesheet" eType="#//File"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="navigationEntries" upperBound="-1"
+        eType="#//Page"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleContentView" eSuperTypes="#//PageBody">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="content" eType="ecore:EClass ../../ch.miranet.dsl.site.domain/model/SiteDomain.ecore#//SimpleContent"/>
+  </eClassifiers>
+</ecore:EPackage>

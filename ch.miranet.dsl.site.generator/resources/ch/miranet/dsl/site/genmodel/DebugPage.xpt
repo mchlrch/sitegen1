@@ -1,0 +1,82 @@
+«IMPORT ch::miranet::dsl::site::siteGenmodel»
+«IMPORT ch::miranet::dsl::site::siteDomain»
+
+«EXTENSION ch::miranet::dsl::site::genmodel::Page»
+
+«REM»
+«ENDREM»
+
+«DEFINE main FOR Page-»
+«FILE this.path.asString() + ".txt" -»
+=HEADER=
+style: [«this.relativePathTo(site.pageHeader.stylesheet)»]
+========
+
+«EXPAND body FOR this.body»
+
+========
+=FOOTER=
+«EXPAND archiveGroup(this) FOREACH this.site.pageFooter.archiveGroups»
+
+«ENDFILE-»
+«ENDDEFINE»
+
+
+«DEFINE body FOR PostView -»
+«EXPAND  postSummary FOR this.post»
+«ENDDEFINE»
+
+«DEFINE body FOR SimpleContentView -»
+«EXPAND  simpleContentSummary FOR this.content»
+«ENDDEFINE»
+
+
+«DEFINE body FOR PageBody -»
+«ERROR "body undefined for:" + this.eClass().metaType»
+«ENDDEFINE»
+
+
+«DEFINE postSummary FOR Post -»
+Name: «this.name»
+Model: «this.model»
+
+Metadata
+  Group:     «this.metaData.group»
+  Title:     «this.metaData.title»
+  refTitle:  «this.metaData.refTitle»
+  createdAt: «this.metaData.createdAt»
+
+=INTRO=
+«this.intro» 
+
+=BODY=
+«this.body»
+«ENDDEFINE»
+
+
+«DEFINE simpleContentSummary FOR SimpleContent -»
+Name: «this.name»
+Model: «this.model»
+
+Metadata
+  Title:     «this.metaData.title»
+  refTitle:  «this.metaData.refTitle»
+
+=BODY=
+«this.body»
+
+«ENDDEFINE»
+
+
+«DEFINE archiveGroup(Page srcPage) FOR ArchiveGroup -»
+archiveGroup: «this.postGroup.name»
+«FOREACH segments AS segment-»
+@@@
+«FOREACH segment.posts AS post-»
+«LET post.primaryPage(this.pageFooter.site) AS targetPage» 
+«post.name» [«srcPage.relativePathTo(targetPage)»]
+
+«ENDLET»
+«ENDFOREACH-»
+«ENDFOREACH»
+«ENDDEFINE»

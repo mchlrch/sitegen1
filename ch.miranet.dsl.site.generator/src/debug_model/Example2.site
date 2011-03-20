@@ -1,0 +1,161 @@
+// groups: howto, seed, td4j, projectXY, ...
+
+post howto_9 (
+  group:    howto
+  title:    "howto 9"
+  refTitle: "howto 9"
+  created:  "0000-00-09"
+) [[INTRO
+.. intro to howto 9 ...
+INTRO]] 
+[[BODY
+... body of howto 9 ...
+BODY]]
+
+post howto_8 (
+  group:    howto
+  title:    "howto 8"
+  refTitle: "howto 8"
+  created:  "0000-00-08"
+) [[INTRO
+.. intro to howto 8 ...
+INTRO]]
+[[BODY
+... body of howto 8 ...
+BODY]]
+
+post howto_7 (
+  group:    howto
+  title:    "howto 7"
+  refTitle: "howto 7"
+  created:  "0000-00-07"
+) [[INTRO
+.. intro to howto 7 ...
+INTRO]]
+[[BODY
+... body of howto 7 ...
+BODY]]
+
+post howto_6 (
+  group:    howto
+  title:    "howto 6"
+  refTitle: "howto 6"
+  created:  "0000-00-06"
+) [[INTRO
+.. intro to howto 6 ...
+INTRO]]
+[[BODY
+... body of howto 6 ...
+BODY]]
+
+
+
+post howto_5 (
+  group:    howto
+  title:    "howto 5"
+  refTitle: "howto 5"
+  created:  "0000-00-05"
+) [[INTRO
+.. intro to howto  5 ...
+INTRO]]
+[[BODY
+... body of howto 5 ...
+BODY]]
+
+post howto_4 (
+  group:    howto
+  title:    "howto 4"
+  refTitle: "howto 4"
+  created:  "0000-00-04"
+) [[INTRO
+.. intro to howto 4 ...
+INTRO]]
+[[BODY
+... body of howto 4 ...
+BODY]]
+
+
+post howto_3 (
+  group:    howto
+  title:    "howto 3"
+  refTitle: "howto 3"
+  created:  "0000-00-03"
+) [[INTRO
+.. intro to howto 3 ...
+INTRO]]
+[[BODY
+... body of howto 3 ...
+BODY]]
+
+post howto_2 (
+  group:    howto
+  title:    "howto 2"
+  refTitle: "howto 2"
+  created:  "0000-00-02"
+) [[INTRO
+.. intro to howto 2 ...
+INTRO]]
+[[BODY
+... body of howto 2 ...
+BODY]]
+
+post howto_1 (
+  group:    howto
+  title:    "howto 1"
+  refTitle: "howto 1"
+  created:  "0000-00-01"
+) [[INTRO
+.. intro to howto 1 ...
+INTRO]]
+[[BODY
+... body of howto 1 ...
+BODY]]
+
+post howto_0 (
+  group:    howto
+  title:    "howto 0"
+  refTitle: "howto 0"
+  created:  "0000-00-00"
+) [[INTRO
+.. intro to howto 0 ...
+INTRO]]
+[[BODY
+... body of howto 0 ...
+BODY]]
+
+post td4j_2 (
+  group:    td4j
+  title:    "td4j 2"
+  refTitle: "td4j 2"
+  created:  "0000-00-02"
+) [[INTRO
+.. intro to td4j 2 ...
+INTRO]]
+[[BODY
+... body of td4j 2 ...
+BODY]]
+
+post td4j_1 (
+  group:    td4j
+  title:    "td4j 1"
+  refTitle: "td4j 1"
+  created:  "0000-00-01"
+)
+ [[INTRO
+.. intro to td4j 1 ...
+INTRO]]
+[[BODY
+... body of td4j 1 ...
+BODY]]
+
+post td4j_0 (
+  group:    td4j
+  title:    "td4j 0"
+  refTitle: "td4j 0"
+  created:  "0000-00-00"
+) [[INTRO
+.. intro to td4j 0 ...
+INTRO]]
+[[BODY
+... body of td4j 0 ...
+BODY]]

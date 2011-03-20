@@ -1,0 +1,12 @@
+content about (
+  title:    "About"
+  refTitle: "About"
+) [[BODY
+<p>My name is Michael Rauch. I live in Biel/Bienne, Switzerland.</p>
+
+<p>I&#8217;m a software engineer, by profession an passion alike. All times agile practitioner, advocate of free software and open standards and fellow of the Free Software Foundation Europe.</p>
+<p>My first programming experience was 1995 with Turbo Pascal. Since then, I have been in contact with a bunch of programming languages and development platforms, including Delphi, Assembler, LabView, Tcl/Tk, C, C++, Perl, PHP, Lisp, Scheme, Prolog, Python, Ruby, Smalltalk, Java and Scala.</p>
+<p>Since 2003 I&#8217;m working almost exclusively on the Java platform (SE and EE).</p>
+<p>So far, I support four protocols for human interaction: German, English, French and Spanish.</p>
+<p><em>Free people use free software!</em></p>
+BODY]]

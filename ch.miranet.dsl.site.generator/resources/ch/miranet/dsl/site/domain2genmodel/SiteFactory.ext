@@ -1,0 +1,72 @@
+import siteDomain;
+import siteGenmodel;
+
+extension ch::miranet::dsl::site::domain2genmodel::PageFooterFactory;
+/* problematic import  extension ch::miranet::dsl::site::genmodel::Page;  */
+
+create Site this toSite(Model model):
+	setDocumentRoot(createDocumentRoot()) ->
+	setHome(model.posts.first().toHomePage(documentRoot)) ->
+	pages.add(this.home) ->
+	pages.addAll(model.posts.toPage(documentRoot)) ->
+	pages.addAll(model.simpleContents.toPage(documentRoot)) ->
+	setDomainModel(model) ->
+	setPageHeader(createPageHeader(this)) ->
+	setPageFooter(createPageFooter(model));
+	
+
+create Page this toPage(Post post, DocumentRoot docRoot):
+	setTitle(post.metaData.title) ->
+	setRefTitle(post.metaData.refTitle) ->
+	setBody(post.toPostView(PostViewType::FULL)) ->
+	setPath(createPath(post, docRoot));
+	
+create Page this toHomePage(Post post, DocumentRoot docRoot):
+	setTitle("Home") ->
+	setRefTitle("Home") ->
+	setBody(post.toPostView(PostViewType::TEASER)) ->
+	setPath(docRoot.createChild("index.html"));
+
+		
+create PostView this toPostView(Post post, PostViewType viewType):
+	setPost(post) ->
+	setViewType(viewType);
+
+
+create Page this toPage(SimpleContent content, DocumentRoot docRoot):
+	setTitle(content.metaData.title) ->
+	setRefTitle(content.metaData.refTitle) ->
+	setBody(content.toSimpleContentView()) ->
+	setPath(createPath(content, docRoot));
+
+create SimpleContentView this toSimpleContentView(SimpleContent content):
+	setContent(content);
+	
+
+create PageHeader this createPageHeader(Site site):
+	setStylesheet(site.documentRoot.createChild("static").createChild("css").createChild("style.css")) ->
+	navigationEntries.add(site.home) ->
+	navigationEntries.addAll(site.domainModel.simpleContentEntryPoints.page(site));
+
+private Page page(SimpleContent content, Site site):
+	site.pages.body.typeSelect(SimpleContentView).selectFirst(body|body.content == content).page;
+	
+// -------------------------------------------------------------------------
+create DocumentRoot this createDocumentRoot():
+	setName("documentRoot") ->
+	setDepth(0);
+
+create File this createPath(Post post, DocumentRoot docRoot):
+	setParent(docRoot.createChild("posts").createChild(post.metaData.createdAt).createChild(post.name)) ->	
+	setDepth(parent.depth+1) ->
+	setName("index.html");
+
+create File this createPath(SimpleContent content, DocumentRoot docRoot):
+	setParent(docRoot.createChild("pages").createChild(content.name)) ->	
+	setDepth(parent.depth+1) ->
+	setName("index.html");
+
+create File this createChild(File parent, String name):
+	setParent(parent) ->
+	setDepth(parent.depth+1) ->
+	setName(name);

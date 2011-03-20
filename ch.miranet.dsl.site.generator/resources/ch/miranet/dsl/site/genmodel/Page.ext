@@ -1,0 +1,26 @@
+import ch::miranet::dsl::site::siteGenmodel;
+import ch::miranet::dsl::site::siteDomain;
+
+String asString(File file):
+	file.parent != null ? file.parent.asString() + '/' + file.name : file.name;
+	
+Page primaryPage(Post post, Site site):
+	site.pages.body.typeSelect(PostView).selectFirst(body|body.viewType == PostViewType::FULL && body.post == post).page;
+	
+/* duplicate of definition in SiteFactory.ext --> troubles with imports in ext, if Page.ext is imported in SiteFactory.ext
+Page page(SimpleContent content, Site site):
+	site.pages.body.typeSelect(SimpleContentView).selectFirst(body|body.content == content).page;
+*/
+	
+String relativePathTo(Page sourcePage, Page targetPage):
+	sourcePage.path.relativePathTo(targetPage.path);
+	
+String relativePathTo(Page sourcePage, File absTargetPath):
+	sourcePage.path.relativePathTo(absTargetPath);
+
+String relativePathTo(File absSourcePath, File absTargetPath):
+	JAVA ch.miranet.dsl.site.genmodel.PageExtension.createRelativePath(ch.miranet.dsl.site.siteGenmodel.File, ch.miranet.dsl.site.siteGenmodel.File);
+	
+String naviMarkup(Page srcPage, Page naviTargetPage):
+	srcPage == naviTargetPage ? "<li class=\"active\">" + naviTargetPage.refTitle + "</li>":
+								"<li><a href=\"" + srcPage.relativePathTo(naviTargetPage) +"\">" + naviTargetPage.refTitle + "</a></li>";

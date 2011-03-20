@@ -1,0 +1,33 @@
+«IMPORT ch::miranet::dsl::site::siteGenmodel»
+«IMPORT ch::miranet::dsl::site::siteDomain»
+
+«EXTENSION ch::miranet::dsl::site::genmodel::Page»
+
+
+«DEFINE archive FOR Page-»
+<div class="archiveBase">
+<div class="archive">
+<h3>Archive</h3>
+
+«EXPAND archiveGroup(this) FOREACH this.site.pageFooter.archiveGroups»
+
+</div><!--end of archive-->
+</div><!--end of archiveBase-->
+«ENDDEFINE»
+
+
+«DEFINE archiveGroup(Page page) FOR ArchiveGroup -»
+<div class="archiveGroup clearfix">
+<h4>«this.postGroup.name»</h4>
+«EXPAND archiveGroupSegment(page) FOREACH this.segments»
+</div><!--end of archiveGroup-->
+«ENDDEFINE»
+
+
+«DEFINE archiveGroupSegment(Page page) FOR ArchiveGroupSegment -»
+<ul>
+«FOREACH this.posts AS post-»
+	<li><a href="«page.relativePathTo(post.primaryPage(page.site))»">«post.metaData.refTitle»</a></li>
+«ENDFOREACH»
+</ul>
+«ENDDEFINE»

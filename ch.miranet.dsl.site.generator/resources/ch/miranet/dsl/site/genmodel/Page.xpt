@@ -1,0 +1,71 @@
+«IMPORT ch::miranet::dsl::site::siteGenmodel»
+«IMPORT ch::miranet::dsl::site::siteDomain»
+
+«EXTENSION ch::miranet::dsl::site::genmodel::Page»
+
+
+«DEFINE main FOR Page-»
+«FILE this.path.asString() -»
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	«EXPAND header FOR this»
+<body>
+	«EXPAND navi FOR this»
+	«EXPAND body FOR this.body»
+	«EXPAND footer FOR this»
+<body>
+</html>
+«ENDFILE-»
+«ENDDEFINE»
+
+«DEFINE header FOR Page-»
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>miranet.ch - «this.title»</title>  
+  <link rel="stylesheet" href="«this.relativePathTo(site.pageHeader.stylesheet)»" type="text/css" media="screen" />  
+</head>
+«ENDDEFINE»
+
+«DEFINE navi FOR Page-»
+<div class="naviBase">
+<div class="navi">
+<ul>
+«LET this.site.pageHeader.navigationEntries.reverse() AS navEntries-»
+«FOREACH navEntries AS navEntry» 
+  «this.naviMarkup(navEntry)»
+«ENDFOREACH-»
+«ENDLET-»
+</ul>
+</div><!--end of navi-->
+</div><!--end of naviBase-->
+«ENDDEFINE»
+
+
+«DEFINE body FOR PostView-»
+«IF this.viewType == PostViewType::TEASER»
+«EXPAND ch::miranet::dsl::site::genmodel::PostView::teaserView FOR this»
+«ELSEIF this.viewType == PostViewType::FULL»
+«EXPAND ch::miranet::dsl::site::genmodel::PostView::fullView FOR this»
+«ELSE»
+«ERROR "body undefined for PostViewType: " + this.viewType»
+«ENDIF»
+«ENDDEFINE»
+
+«DEFINE body FOR SimpleContentView-»
+«EXPAND ch::miranet::dsl::site::genmodel::SimpleContentView::fullView FOR this»
+«ENDDEFINE»
+
+«DEFINE body FOR PageBody-»
+«ERROR "body undefined for:" + this.eClass().metaType»
+«ENDDEFINE»
+
+
+«DEFINE footer FOR Page-»
+«EXPAND ch::miranet::dsl::site::genmodel::PageFooter::archive FOR this»
+<div class="footerBase">
+<div class="footer">
+<p>© Copyright 2011 by Michael Rauch.</p>
+<p>Content licensed under the Creative Commons attribution-noncommercial-sharealike License.</p>
+</div>
+</div>
+«ENDDEFINE»

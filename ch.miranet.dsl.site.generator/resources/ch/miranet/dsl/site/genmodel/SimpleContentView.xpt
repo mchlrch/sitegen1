@@ -1,0 +1,16 @@
+«IMPORT ch::miranet::dsl::site::siteGenmodel»
+«IMPORT ch::miranet::dsl::site::siteDomain»
+
+«EXTENSION ch::miranet::dsl::site::genmodel::Page»
+
+
+«DEFINE fullView FOR SimpleContentView-»
+«LET this.content.metaData AS metaData»
+<div class="content">
+<h2><a href="«this.page.relativePathTo(this.page)»" rel="bookmark" title="Permanent Link to «metaData.title»">«metaData.title»</a></h2>
+
+«this.content.body»
+
+</div> <!-- content -->
+«ENDLET»
+«ENDDEFINE»
