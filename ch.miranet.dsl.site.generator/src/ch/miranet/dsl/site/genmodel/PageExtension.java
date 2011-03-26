@@ -3,7 +3,22 @@ package ch.miranet.dsl.site.genmodel;
 import ch.miranet.dsl.site.siteGenmodel.File;
 
 public class PageExtension {
+	
 	public static String createRelativePath(File absSourcePath, File absTargetPath) {
+		final String pathToRoot = createPathToRoot(absSourcePath.getDepth());
+		return createRelativePathInternal(pathToRoot, absTargetPath);
+	}
+	
+	// RedirectionPage
+	public static String createRelativePath(String absSourcePath, File absTargetPath) {
+		if ( ! absSourcePath.endsWith("/")) throw new IllegalArgumentException("absSourcePath must end with a '/': " + absSourcePath);
+		
+		final int srcPathDepth = countCharsInString(absSourcePath, '/');
+		final String pathToRoot = createPathToRoot(srcPathDepth);
+		return createRelativePathInternal(pathToRoot, absTargetPath);
+	}
+	
+	private static String createRelativePathInternal(final String pathToRoot, File absTargetPath) {
 		
 		// if targetPath ends in 'index.html', then cut it off (link to containing folder instead)
 		if ("index.html".equalsIgnoreCase(absTargetPath.getName())) {
@@ -11,7 +26,6 @@ public class PageExtension {
 		}
 		
 		// backtrack to documentRoot, then use target path starting from documentRoot
-		final String pathToRoot = createPathToRoot(absSourcePath.getDepth());
 		final String targetPath = pathToString(absTargetPath);
 		final String relativePathToTarget = pathToRoot + targetPath;
 		return relativePathToTarget;
@@ -34,4 +48,17 @@ public class PageExtension {
 		return pathToRoot.toString();
 	}
 
+	
+	private static int countCharsInString(String s, char ch) {
+		int count = 0;
+		
+		for (int from=0, index = s.indexOf(ch, from);
+			 index >= 0;
+			 index = s.indexOf(ch, from)) {
+		  count++;
+		  from = index+1;
+		}
+		return count;
+	}
+	
 }

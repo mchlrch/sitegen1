@@ -4,7 +4,7 @@ import org.eclipse.emf.mwe.utils.*
 
 var targetDir = "src-gen"
 var fileEncoding = "UTF-8"
-var modelPath = "src/model"
+var modelPath = "../ch.miranet/model"
 
 Workflow {
 
@@ -51,11 +51,30 @@ Workflow {
 		fileEncoding = fileEncoding
 	}
 	
+	component = org.eclipse.xpand2.Generator {
+		expand = "ch::miranet::dsl::site::genmodel::RedirectionPage::main FOREACH site.redirectionPages"
+		outlet = {
+			path = targetDir
+		}
+		fileEncoding = fileEncoding
+	}
+	
 	/* ***************************
 	 * dieser generator erzeugt nur simple textfiles fürs debugging des models
 	 * ***************************/
 	 component = org.eclipse.xpand2.Generator {
 		expand = "ch::miranet::dsl::site::genmodel::DebugPage::main FOREACH site.pages"
+		outlet = {
+			path = targetDir
+		}
+		fileEncoding = fileEncoding
+	}
+	
+	/* ***************************
+	 * dieser generator erzeugt nur simple textfiles fürs debugging des models
+	 * ***************************/
+	 component = org.eclipse.xpand2.Generator {
+		expand = "ch::miranet::dsl::site::genmodel::DebugPage::main FOR site.redirectionPages"
 		outlet = {
 			path = targetDir
 		}

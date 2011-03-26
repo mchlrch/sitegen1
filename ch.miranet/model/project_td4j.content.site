@@ -1,0 +1,8 @@
+content project_td4j (
+  title:    "td4j - Testdrive for Java"
+  refTitle: "td4j"
+) [[BODY
+<p>td4j is a prototyping framework for domain models written in Java.</p>
+<p>More information is available at the <a href="http://td4j.sourceforge.net/">td4j project page at sourceforge</a></p>
+
+BODY]]
