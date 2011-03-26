@@ -7,7 +7,8 @@ create Model this toDomainModel(Collection[siteDsl::ModelElement] dslElements):
 	posts.addAll(dslElements.typeSelect(siteDsl::Post).toDomainPosts()) ->
 	postGroups.addAll(posts.collect(p|p.metaData.group).toSet().sortBy(g|g.name)) ->
 	simpleContents.addAll(dslElements.typeSelect(siteDsl::SimpleContent).toDomainSimpleContent()) ->
-	simpleContentEntryPoints.addAll(dslElements.typeSelect(siteDsl::ContentEntryPointDefinition).first().entryPoints.toDomainSimpleContent());
+	simpleContentEntryPoints.addAll(dslElements.typeSelect(siteDsl::ContentEntryPointDefinition).first().entryPoints.toDomainSimpleContent()) ->
+	redirections.addAll(dslElements.typeSelect(siteDsl::RedirectionDefinition).first().redirections.toDomainRedirection());
 
 
 create Post this toDomainPost(siteDsl::Post dslPost):
@@ -35,9 +36,18 @@ create SimpleContent this toDomainSimpleContent(siteDsl::SimpleContent dslConten
 	setMetaData(dslContent.metaData.toDomainSimpleContentMetaData()) ->
 	setBody(dslContent.body);
 	
+	
+create Redirection this toDomainRedirection(siteDsl::Redirection dslRedirection):
+	setPath(dslRedirection.path) ->
+	setTarget(dslRedirection.target.toDomainContent());	
+private Content toDomainContent(siteDsl::SimpleContent dslContent): dslContent.toDomainSimpleContent();
+private Content toDomainContent(siteDsl::Post dslPost): dslPost.toDomainPost(); 
+
+
 create SimpleContentMetaData this toDomainSimpleContentMetaData(siteDsl::SimpleContentMetaData dslMetaData):
 	setTitle(dslMetaData.title) ->
 	setRefTitle(dslMetaData.refTitle);
+	
 	
 
 private List[Post] toDomainPosts(Collection[siteDsl::Post] dslPosts):

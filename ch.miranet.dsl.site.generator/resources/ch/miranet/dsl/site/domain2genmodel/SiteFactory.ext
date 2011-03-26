@@ -13,7 +13,8 @@ create Site this toSite(Model model):
 	pages.addAll(model.simpleContents.toPage(documentRoot)) ->
 	setDomainModel(model) ->
 	setPageHeader(createPageHeader(this)) ->
-	setPageFooter(createPageFooter(model));
+	setPageFooter(createPageFooter(model)) ->
+	redirectionPages.addAll(model.redirections.toRedirectionPage(documentRoot));
 	
 
 create Page this toPage(Post post, DocumentRoot docRoot):
@@ -27,6 +28,10 @@ create Page this toHomePage(Post post, DocumentRoot docRoot):
 	setRefTitle("Home") ->
 	setBody(post.toPostView(PostViewType::TEASER)) ->
 	setPath(docRoot.createChild("index.html"));
+	
+create RedirectionPage this toRedirectionPage(Redirection redirection, DocumentRoot docRoot):
+	setPath(docRoot.name + "/" + redirection.path) ->
+	setTarget(redirection.target.page(docRoot.site));
 
 		
 create PostView this toPostView(Post post, PostViewType viewType):

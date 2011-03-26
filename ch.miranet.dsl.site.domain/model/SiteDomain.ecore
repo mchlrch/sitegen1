@@ -12,6 +12,8 @@
         eType="#//SimpleContent" containment="true" eOpposite="#//SimpleContent/model"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="simpleContentEntryPoints"
         upperBound="-1" eType="#//SimpleContent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="redirections" upperBound="-1"
+        eType="#//Redirection" containment="true" eOpposite="#//Redirection/model"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Post" eSuperTypes="#//Content">
     <eStructuralFeatures xsi:type="ecore:EReference" name="metaData" eType="#//PostMetaData"
@@ -56,5 +58,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="year" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="month" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="day" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Redirection">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Content"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//Model"
+        eOpposite="#//Model/redirections"/>
   </eClassifiers>
 </ecore:EPackage>

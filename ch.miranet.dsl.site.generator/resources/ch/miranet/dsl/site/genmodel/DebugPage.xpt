@@ -22,6 +22,18 @@ style: [«this.relativePathTo(site.pageHeader.stylesheet)»]
 «ENDDEFINE»
 
 
+
+«DEFINE main FOR List[RedirectionPage]-»
+«FILE "redirections.txt" -»
+«FOREACH this AS redirection»
+«redirection.path»
+    HTTP 301  -> «redirection.relativePathToTarget()»
+«ENDFOREACH»
+«ENDFILE-»
+«ENDDEFINE»
+
+
+
 «DEFINE body FOR PostView -»
 «EXPAND  postSummary FOR this.post»
 «ENDDEFINE»

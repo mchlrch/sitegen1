@@ -3,11 +3,16 @@ import siteDomain;
 import ch::miranet::dsl::site::siteGenmodel;
 import ch::miranet::dsl::site::siteDomain;
 
+extension org::eclipse::xtend::util::stdlib::io;
+
 String asString(File file):
 	file.parent != null ? file.parent.asString() + '/' + file.name : file.name;
 	
 Page primaryPage(Post post, Site site):
 	site.pages.body.typeSelect(PostView).selectFirst(body|body.viewType == PostViewType::FULL && body.post == post).page;
+	
+Page page(Post post, Site site): post.primaryPage(site);
+Page page(Content content, Site site): throwError("page() undefined for " + content.metaType);
 	
 Page page(SimpleContent content, Site site):
 	site.pages.body.typeSelect(SimpleContentView).selectFirst(body|body.content == content).page;
@@ -21,6 +26,12 @@ String relativePathTo(Page sourcePage, File absTargetPath):
 String relativePathTo(File absSourcePath, File absTargetPath):
 	JAVA ch.miranet.dsl.site.genmodel.PageExtension.createRelativePath(ch.miranet.dsl.site.siteGenmodel.File, ch.miranet.dsl.site.siteGenmodel.File);
 	
+String relativePathTo(String absSourcePath, File absTargetPath):
+	JAVA ch.miranet.dsl.site.genmodel.PageExtension.createRelativePath(java.lang.String, ch.miranet.dsl.site.siteGenmodel.File);
+	
 String naviMarkup(Page srcPage, Page naviTargetPage):
 	srcPage == naviTargetPage ? "<li class=\"active\">" + naviTargetPage.refTitle + "</li>":
 								"<li><a href=\"" + srcPage.relativePathTo(naviTargetPage) +"\">" + naviTargetPage.refTitle + "</a></li>";
+								
+String relativePathToTarget(RedirectionPage redirection):
+	redirection.path.relativePathTo(redirection.target.path);

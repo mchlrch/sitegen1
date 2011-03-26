@@ -33,6 +33,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="pageHeader" eType="#//PageHeader"
         containment="true" eOpposite="#//PageHeader/site"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="home" eType="#//Page"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="redirectionPages" upperBound="-1"
+        eType="#//RedirectionPage" containment="true" eOpposite="#//RedirectionPage/site"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="File">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
@@ -71,5 +73,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SimpleContentView" eSuperTypes="#//PageBody">
     <eStructuralFeatures xsi:type="ecore:EReference" name="content" eType="ecore:EClass ../../ch.miranet.dsl.site.domain/model/SiteDomain.ecore#//SimpleContent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RedirectionPage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Page"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="site" eType="#//Site" eOpposite="#//Site/redirectionPages"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

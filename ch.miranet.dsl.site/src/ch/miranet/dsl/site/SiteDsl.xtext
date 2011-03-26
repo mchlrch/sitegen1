@@ -6,7 +6,11 @@ Model:
 	elements+=ModelElement*;
 	
 ModelElement:
-	Post | PostGroupDefinition | SimpleContent | ContentEntryPointDefinition;
+	Content | PostGroupDefinition | ContentEntryPointDefinition | RedirectionDefinition;
+	
+	
+Content:
+	Post | SimpleContent;
 	
 Post:
 	'post' name=ID '(' metaData=PostMetaData ')'
@@ -42,6 +46,12 @@ PostGroup:
 	
 ContentEntryPointDefinition: {ContentEntryPointDefinition}
 	'entryPoints' name=ID '(' entryPoints+=[SimpleContent] (',' entryPoints+=[SimpleContent])* ')';
+
+RedirectionDefinition: {RedirectionDefinition}
+	'redirections' name=ID '(' redirections+=Redirection (',' redirections+=Redirection)* ')';
+
+Redirection:
+	'redirect' path=STRING '->' target=[Content];
 
 Date:
 	year=INT '-' month=INT '-' day=INT;
