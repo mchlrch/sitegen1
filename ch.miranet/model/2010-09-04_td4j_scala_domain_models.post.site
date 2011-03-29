@@ -2,10 +2,16 @@ post td4j_scala_domain_models (
   group:    td4j
   title:    "Scala domain models and td4j"
   refTitle: "Scala domain models"
-  created:  2010-09-04
+  created:  2010-09-04 19:27:00 +01:00
+  
+// (UTC+1 - Achtung: während DST (Sommerzeit) 1h abziehen)
+  
 //  tags:     td4j, scala
-) [[BODY
-<p>I started to write Scala versions of the td4j examples. td4j recognizes setter and getter methods following the Java Bean convention, so I use the <strong>@BeanProperty</strong> annotation where appropriate. </p>
+) [[INTRO
+I started to write Scala versions of the td4j examples.
+INTRO]]
+[[BODY
+<p>td4j recognizes setter and getter methods following the Java Bean convention, so I use the <strong>@BeanProperty</strong> annotation where appropriate. </p>
 
 <p>Here is how the td4j HelloWorld example looks like in Scala:</p>
 <pre>

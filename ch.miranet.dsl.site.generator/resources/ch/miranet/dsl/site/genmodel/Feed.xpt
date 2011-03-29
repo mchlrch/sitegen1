@@ -1,0 +1,43 @@
+«IMPORT ch::miranet::dsl::site::siteGenmodel»
+«IMPORT ch::miranet::dsl::site::siteDomain»
+
+
+«EXTENSION ch::miranet::dsl::site::genmodel::Page»
+«EXTENSION ch::miranet::dsl::site::domain::Timestamp»
+
+
+«DEFINE main(String baseURL) FOR Site-»
+«LET "documentRoot/feed.atom" AS path»
+«FILE path -»
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title>miranet.ch - thoughts and writings of Michael Rauch</title>
+  <link href="«baseURL»"/>
+    <updated>«this.domainModel.posts.first().metaData.createdAt.formatRFC3339TS()»</updated>
+  <author>
+    <name>Michael Rauch</name>
+  </author>
+  <id>«baseURL»</id>
+  
+«EXPAND entry(baseURL,this) FOREACH this.domainModel.posts»
+</feed>
+
+«ENDFILE»
+«ENDLET»
+«ENDDEFINE»
+
+
+«DEFINE entry(String baseURL, Site site) FOR Post-»
+«LET "./".relativePathTo(this.primaryPage(site).path) AS relativePath-»
+«LET baseURL + relativePath AS absPath-»
+  <entry>
+    <title>«this.metaData.title»</title>
+    <link href="«absPath»"/>
+    <id>«absPath»</id>
+    <updated>«this.metaData.createdAt.formatRFC3339TS()»</updated>
+    <summary>«this.intro»</summary>
+  </entry>
+«ENDLET-»
+«ENDLET-»
+«ENDDEFINE»

@@ -1,6 +1,6 @@
 import siteDomain;
 
-extension ch::miranet::dsl::site::domain::Date;
+extension ch::miranet::dsl::site::domain::Timestamp;
 // extension org::eclipse::xtend::util::stdlib::io;
 
 create Model this toDomainModel(Collection[siteDsl::ModelElement] dslElements):
@@ -21,15 +21,21 @@ create PostMetaData this toDomainPostMetaData(siteDsl::PostMetaData dslMetaData)
 	setGroup(dslMetaData.group.toDomainPostGroup()) ->
 	setTitle(dslMetaData.title) ->
 	setRefTitle(dslMetaData.refTitle) ->
-	setCreatedAt(dslMetaData.createdAt.toDomainDate());
+	setCreatedAt(dslMetaData.createdAt.toDomainTimestamp());
 
 create PostGroup toDomainPostGroup(siteDsl::PostGroup dslPostGroup):
 	setName(dslPostGroup.name);
 
-create Date toDomainDate(siteDsl::Date dslDate):
-	setYear(dslDate.year) ->
-	setMonth(dslDate.month) ->
-	setDay(dslDate.day);
+create Timestamp toDomainTimestamp(siteDsl::Timestamp dslTimestamp):
+	setYear(dslTimestamp.date.year) ->
+	setMonth(dslTimestamp.date.month) ->
+	setDay(dslTimestamp.date.day) ->
+	setHour(dslTimestamp.time.hour) ->
+	setMinute(dslTimestamp.time.minute) ->
+	setSecond(dslTimestamp.time.second) ->
+	setIsTZPositiveOffset(dslTimestamp.timezone.isPositiveOffset) ->
+	setTzHourOffset(dslTimestamp.timezone.hour) ->
+	setTzMinuteOffset(dslTimestamp.timezone.minute);
 
 create SimpleContent this toDomainSimpleContent(siteDsl::SimpleContent dslContent):
 	setName(dslContent.name) ->
@@ -51,6 +57,6 @@ create SimpleContentMetaData this toDomainSimpleContentMetaData(siteDsl::SimpleC
 	
 
 private List[Post] toDomainPosts(Collection[siteDsl::Post] dslPosts):
-	dslPosts.sortBy(post|post.metaData.createdAt.format()).reverse().toDomainPost();
+	dslPosts.sortBy(post|post.metaData.createdAt.date.format()).reverse().toDomainPost();
 
 private format(siteDsl::Date date): format(date.year, date.month, date.day);

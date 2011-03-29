@@ -30,6 +30,7 @@
 <div class="naviBase">
 <div class="navi">
 <ul>
+<li><a href="http://www.miranet.ch/feed.atom">feed</a></li>
 «LET this.site.pageHeader.navigationEntries.reverse() AS navEntries-»
 «FOREACH navEntries AS navEntry» 
   «this.naviMarkup(navEntry)»

@@ -24,7 +24,7 @@ PostMetaData:
   	'refTitle:' refTitle=STRING
 //  	('refTitle:' refTitle=STRING)?
 
-  	'created:'  createdAt=Date
+  	'created:'  createdAt=Timestamp
 	;
 //  	'path:' path=STRING;
   	
@@ -53,8 +53,18 @@ RedirectionDefinition: {RedirectionDefinition}
 Redirection:
 	'redirect' path=STRING '->' target=[Content];
 
+Timestamp:
+	date=Date time=Time timezone=Timezone;
+	
 Date:
 	year=INT '-' month=INT '-' day=INT;
+	
+Time:
+	hour=INT ':' minute=INT ':' second=INT;
+	
+Timezone:
+	(isPositiveOffset?='+' | '-') hour=INT ':' minute=INT;
+	
 
 terminal INTRO	: '[[INTRO' -> 'INTRO]]';	
 terminal BODY	: '[[BODY' -> 'BODY]]';

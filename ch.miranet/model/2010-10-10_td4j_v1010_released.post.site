@@ -2,15 +2,13 @@ post td4j_v1010_released (
   group:    td4j
   title:    "td4j 10.10 released"
   refTitle: "v10.10 released"
-  created:  2010-10-10
+  created:  2010-10-10 17:22:00 +01:00
+  
+// (UTC+1 - Achtung: während DST (Sommerzeit) 1h abziehen)
+  
 //  tags:     td4j, java, projectUpdates
 ) [[INTRO
-<p>This new release includes two major features:
-<ul>
-<li>Options for mutable individual properties</li>
-<li>Companion objects</li>
-</ul>
-</p>
+This new release includes two major features; options for mutable individual properties and companion objects
 INTRO]]
 
 [[BODY

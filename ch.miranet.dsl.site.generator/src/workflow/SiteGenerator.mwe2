@@ -59,6 +59,14 @@ Workflow {
 		fileEncoding = fileEncoding
 	}
 	
+	component = org.eclipse.xpand2.Generator {
+		expand = "ch::miranet::dsl::site::genmodel::Feed::main(\"http://www.miranet.ch/\") FOR site"
+		outlet = {
+			path = targetDir
+		}
+		fileEncoding = fileEncoding
+	}
+	
 	/* ***************************
 	 * dieser generator erzeugt nur simple textfiles fürs debugging des models
 	 * ***************************/

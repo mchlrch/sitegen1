@@ -2,7 +2,7 @@ import siteDomain;
 import siteGenmodel;
 
 extension ch::miranet::dsl::site::domain2genmodel::PageFooterFactory;
-extension ch::miranet::dsl::site::domain::Date;
+extension ch::miranet::dsl::site::domain::Timestamp;
 extension ch::miranet::dsl::site::genmodel::Page;
 
 create Site this toSite(Model model):
@@ -60,8 +60,8 @@ create DocumentRoot this createDocumentRoot():
 	setDepth(0);
 
 create File this createPath(Post post, DocumentRoot docRoot):
-	let cDate = post.metaData.createdAt:
-		setParent(docRoot.createChild("posts").createChild(""+cDate.year).createChild(cDate.month.twoDigits()).createChild(cDate.day.twoDigits()).createChild(post.name)) ->	
+	let ts = post.metaData.createdAt:
+		setParent(docRoot.createChild("posts").createChild(""+ts.year).createChild(ts.month.twoDigits()).createChild(ts.day.twoDigits()).createChild(post.name)) ->	
 		setDepth(parent.depth+1) ->
 		setName("index.html");
 

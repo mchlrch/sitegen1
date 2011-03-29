@@ -1,0 +1,13 @@
+import siteDomain;
+import ch::miranet::dsl::site::siteDomain;
+
+formatDatePart(Timestamp ts): format(ts.year, ts.month, ts.day);
+
+formatRFC3339TS(Timestamp ts):
+	"" + ts.year + "-" + ts.month.twoDigits() + "-" + ts.day.twoDigits()
+	+ "T" + ts.hour.twoDigits() + ":" + ts.minute.twoDigits() + ":" + ts.second.twoDigits()
+	+ (ts.isTZPositiveOffset ? "+" : "-") + ts.tzHourOffset.twoDigits() + ":" + ts.tzMinuteOffset.twoDigits();
+
+format(Integer year, Integer month, Integer day): "" + year + "-" + month.twoDigits() + "-" + day.twoDigits();
+
+twoDigits(Integer n):  n < 10 ? "0" + n : "" + n;

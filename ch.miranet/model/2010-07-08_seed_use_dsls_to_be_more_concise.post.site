@@ -2,11 +2,16 @@ post seed_use_dsls_to_be_more_concise (
   group:    seed
   title:    "Use DSLs to be more concise"
   refTitle: "Use DSLs to be more concise"
-  created:  2010-07-08
+  created:  2010-07-08 21:50:00 +01:00
+  
+// (UTC+1 - Achtung: während DST (Sommerzeit) 1h abziehen)
+  
 //  tags:     td4j, java, projectUpdates
-) [[BODY
-<p>Models can be expressed more concise with domain specific languages (<a href="http://www.martinfowler.com/bliki/DomainSpecificLanguage.html">DSL</a>s).</p>
-<p>Creating a textual DSL with <a href="http://www.eclipse.org/Xtext/">Xtext</a> was surprisingly easy.</p>
+) [[INTRO
+Models can be expressed more concise with domain specific languages (DSL). This is an example using Xtext.
+INTRO]]
+[[BODY
+<p>Creating a textual <a href="http://www.martinfowler.com/bliki/DomainSpecificLanguage.html">DSL</a> with <a href="http://www.eclipse.org/Xtext/">Xtext</a> was surprisingly easy.</p>
 
 <p>As an exercise, I created a DSL to describe business processes. My goal was to generate a jPDL file for <a href="http://www.jboss.org/jbpm/">jBPM</a> as end result. I didn&#8217;t aim at complete coverage of jPDL and rather just modeled a small fragment of it.</p>
 <p>Briefly, I wanted to be able to describe <a href="http://docs.jboss.com/jbpm/v4/userguide/html_single/#concurrency">that process from the jBPM User Guide</a>.</p>

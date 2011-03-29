@@ -1,0 +1,13 @@
+- heutigen wordpress inhalt von miranet.ch als DSL übernehmen
+- Atom Feed
+  - Feed als Entity im genmodel führen (inkl. Path)
+  - URL zum Feed nicht hartcodieren, sondern Page.ext::relativePath
+    - Feed.xpt (+extensions)  
+    - Page.xpt
+
+- HTML escaping (&uuml;)
+- Markdown support
+- rsync auf netzone.ch
+- CSS no-print für header+footer (so wie bei fsf.org)
+- CSS debugging mit firebug
+- SimpleContent composite für hierarchische seitenstrukturen ('projects/td4j')
