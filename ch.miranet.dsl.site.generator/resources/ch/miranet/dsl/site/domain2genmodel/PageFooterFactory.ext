@@ -12,9 +12,9 @@ create ArchiveGroup this toArchiveGroup(PostGroup postGroup):
 	segments.addAll(createArchiveGroupSegments(postGroup, archiveGroupSegmentCount()));
 
 private List[ArchiveGroupSegment] createArchiveGroupSegments(PostGroup postGroup, Integer segmentCount):
-	0.upTo(segmentCount-1).collect(index|postGroup.postsForArchiveSegment(index, segmentCount).createArchiveGroupSegment());
+	0.upTo(segmentCount-1).collect(index|postGroup.postsForArchiveSegment(index, segmentCount).createArchiveGroupSegment(postGroup, index));
 
-create ArchiveGroupSegment this createArchiveGroupSegment(List[Post] postsInSegment):
+create ArchiveGroupSegment this createArchiveGroupSegment(List[Post] postsInSegment, PostGroup postGroup, Integer index):
 	 posts.addAll(postsInSegment);
 
 private List[Post] postsForArchiveSegment(PostGroup group, Integer segmentIndex, Integer segmentCount):

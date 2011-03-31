@@ -1,4 +1,6 @@
 import siteDomain;
 
+extension ch::miranet::dsl::site::domain::Timestamp;
+
 cached List[Post] postsInGroup(PostGroup postGroup):
-	postGroup.posts.post.sortBy(post|post.metaData.createdAt).reverse();
+	postGroup.posts.post.sortBy(post|post.metaData.createdAt.formatDatePart()).reverse();

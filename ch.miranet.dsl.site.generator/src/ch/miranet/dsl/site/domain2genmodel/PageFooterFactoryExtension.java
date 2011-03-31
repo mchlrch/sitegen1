@@ -21,7 +21,7 @@ public class PageFooterFactoryExtension {
 		}
 		
 		final List<Object> segmentAtIndex = elements.subList(startForIndex, startForIndex+countPerSegment[segmentIndex]);
-		return segmentAtIndex;		
+		return segmentAtIndex;
 	}
 	
 }
