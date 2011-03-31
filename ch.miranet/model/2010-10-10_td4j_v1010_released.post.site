@@ -5,8 +5,10 @@ post td4j_v1010_released (
   created:  2010-10-10 17:22:00 +01:00
   
 // (UTC+1 - Achtung: während DST (Sommerzeit) 1h abziehen)
-  
-//  tags:     td4j, java, projectUpdates
+
+// Tags: td4j
+// Posted in Coding, Project Updates
+
 ) [[INTRO
 This new release includes two major features; options for mutable individual properties and companion objects
 INTRO]]

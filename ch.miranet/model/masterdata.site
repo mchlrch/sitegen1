@@ -1,11 +1,28 @@
 // groups: howto, seed, td4j, projectXY, ...
 
-groups (td4j, seed)
+groups (howto, td4j, seed)
 
 entryPoints navigation (about, project_td4j)
 
 redirections forward (
-    redirect "2010/10/10/td4j-1010-released/"           -> td4j_v1010_released,
-	redirect "2010/09/04/scala-domain-models-and-td4j/" -> td4j_scala_domain_models,
-	redirect "2010/07/08/use-dsls-to-be-more-concise/"  -> seed_use_dsls_to_be_more_concise
+    redirect "2010/10/10/td4j-1010-released/"
+          -> td4j_v1010_released,
+      
+	redirect "2010/09/04/scala-domain-models-and-td4j/"
+	      -> td4j_scala_domain_models,
+	  
+	redirect "2010/07/08/use-dsls-to-be-more-concise/"
+	      -> seed_use_dsls_to_be_more_concise,
+	  
+	redirect "2010/07/06/added-support-for-companion-objects-in-td4j/"
+	      -> td4j_added_support_for_companion_objects,
+	  
+	redirect "2010/06/20/coming-new-features-of-td4j/"
+	      -> td4j_coming_new_features,
+	  
+	redirect "2010/06/05/td4j-106-released/"
+	      -> td4j_v106_released,
+	  
+	redirect "2010/03/25/typesafe-access-to-a-generic-map/"
+	      -> howto_typesafe_access_to_generic_map
 )

@@ -1,0 +1,18 @@
+post td4j_v106_released (
+  group:    td4j
+  title:    "td4j-10.6 released"
+  refTitle: "v10.6 released"
+  created:   2010-06-05 20:44:00 +01:00
+  
+// Tags: td4j
+// Posted in Coding, Project Updates
+
+) [[INTRO
+This is mostly a maintenance release. The core metamodel has been completely rewritten to have a solid base for upcoming features.
+INTRO]]
+[[BODY
+<p>LinkController now falls back on xdg-open if Desktop.browse() is not supported.</p>
+<p>Annotations have been renamed: @Operation, @Show, @ShowProperties (was previously @Executable, @Expose, @ExposeProperties).
+The <a href="http://sourceforge.net/apps/trac/td4j/">tutorials</a> are updated accordingly.</p>
+<p><a href="http://sourceforge.net/projects/td4j/files/">Dowload td4j from Sourceforge</a></p>
+BODY]]

@@ -1,0 +1,18 @@
+post td4j_added_support_for_companion_objects (
+
+
+  group:    td4j
+  title:    "Added support for companion objects in td4j"
+  refTitle: "Added support for companion objects"
+  created:  2010-07-06 11:25:00 +01:00
+  
+// Tags: td4j
+// Posted in Coding, Project Updates
+
+) [[INTRO
+Operations of companion objects are shown together with the operations of the domain object.
+INTRO]]
+[[BODY
+<p>This makes it easy to add behavior for prototyping to the context of domain objects without messing up the domain object code.</p>
+<p>See <a href="http://td4j.svn.sourceforge.net/viewvc/td4j/trunk/td4j/examples/org/td4j/examples/dispatcher/DispatcherExample.java?revision=151&#038;view=markup">dispatcher example</a> for usage details.</p>
+BODY]]

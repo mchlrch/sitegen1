@@ -6,7 +6,9 @@ post seed_use_dsls_to_be_more_concise (
   
 // (UTC+1 - Achtung: während DST (Sommerzeit) 1h abziehen)
   
-//  tags:     td4j, java, projectUpdates
+// Tags: dsl, mdsd
+// Posted in Coding, Uncategorized
+
 ) [[INTRO
 Models can be expressed more concise with domain specific languages (DSL). This is an example using Xtext.
 INTRO]]

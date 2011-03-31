@@ -1,0 +1,23 @@
+post td4j_coming_new_features (
+  group:    td4j
+  title:    "Coming new features of td4j"
+  refTitle: "Coming new features"
+  created:  2010-06-20 02:03:00 +01:00
+  
+// Tags: td4j
+// Posted in Coding
+
+) [[INTRO
+As I mentioned in my last post, the recent release td4j-10.6 doesn’t include many new features.
+For this reason, I compiled a list of the most important features that will be included in the coming releases.
+INTRO]]
+[[BODY
+<ul>
+<li>allow better separation of domain objects from domain and application services via companion objects</li>
+<li>free domain objects from being observable by propagating change events via EventBus instead</li>
+<li>support for custom primitive types</li>
+<li>choice provisioning for mutable individual properties (ComboBox, List)</li>
+<li>support embedded properties for aggregates</li>
+<li>support operation affinity to show operations next to the affected property</li>
+</ul>
+BODY]]

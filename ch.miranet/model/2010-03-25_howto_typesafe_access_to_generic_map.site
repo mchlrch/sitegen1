@@ -1,0 +1,82 @@
+post howto_typesafe_access_to_generic_map (
+  group:    howto
+  title:    "Typesafe access to a generic Map"
+  refTitle: "Typesafe access to a generic Map"
+  created:  2010-03-25 20:16:00 +01:00
+  
+// Tags: java, typesafe
+// Posted in Coding
+
+) [[INTRO
+While thinking about the metamodel for td4j, I came up with the idea of having a generic container to allow for storing arbitrary content.
+A map with key/value pairs seemed to be a good fit for the container.
+INTRO]]
+[[BODY
+<p>But I had one additional requirement in mind: I want to have typesafe access to the Map - no casting.</p>
+
+<p>The solution turned out to be fairly simple. I just use a generic interface as the key.
+The interface is typed with the class of the resource (value) and that way the map accessors (put &#038; get)
+have typed parameters and return value as well.</p>
+
+<p>The keys have to implement interface <em>ResourceKey</em>.
+The implementation can be a regular class or also an enum, as shown in the sample code below.</p>
+
+<pre>
+<code>
+public static void main(String[] args) {
+  GenericMap map = new GenericMap();
+
+  <strong>map.put(Name.First, "Michael");
+  map.put(Name.Last,  "Rauch");
+  map.put(YobKey.INSTANCE, 1978);
+
+  String firstName = map.get(Name.First);
+  String lastName  = map.get(Name.Last);
+  Integer yob = map.get(YobKey.INSTANCE);</strong>
+
+  System.out.println(String.format("%s %s (%d)", firstName, lastName, yob));
+}
+
+// =================================================================
+
+enum Name implements ResourceKey&lt;String&gt; {
+  First, Last;
+
+  public Class&lt;String&gt; getResourceType() {
+    return String.class;
+  }
+}
+
+public static class YobKey implements ResourceKey&lt;Integer&gt; {
+  private static YobKey INSTANCE = new YobKey();
+  private YobKey () {}		
+
+  public Class&lt;Integer&gt; getResourceType() {
+    return Integer.class;
+  }
+}
+
+// =================================================================
+
+public static <strong>class GenericMap</strong> {
+  private final Map&lt;ResourceKey&lt;?&gt;, Object&gt; resourceMap = new HashMap&lt;ResourceKey&lt;?&gt;, Object&gt;();
+
+  public &lt;T extends Object&gt; void <strong>put(ResourceKey&lt;T&gt; key, T res)</strong> {
+    resourceMap.put(key, res);
+  }
+
+  public &lt;T&gt; <strong>T get(ResourceKey&lt;T&gt; key)</strong> {
+    final Object res = resourceMap.get(key);
+    return (T) res;
+  }
+
+  public Set&lt;ResourceKey&lt;?&gt;&gt; keySet() {
+    return resourceMap.keySet();
+  }
+}
+
+public<strong> interface ResourceKey&lt;R&gt;</strong> {
+  public Class&lt;R&gt; getResourceType();
+}</code>
+</pre>
+BODY]]
