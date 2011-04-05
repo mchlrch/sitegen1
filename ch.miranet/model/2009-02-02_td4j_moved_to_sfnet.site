@@ -1,0 +1,17 @@
+post td4j_moved_to_sfnet (
+  group:    td4j
+  title:    "td4j moved to sf.net"
+  refTitle: "Project moved to sf.net"
+  created:  2009-02-02 21:26:00 +01:00
+  
+// Tags: td4j
+// Posted in Project Updates
+
+) [[INTRO
+I have moved over the source from launchpad to sourceforge.
+INTRO]]
+[[BODY
+<p>The reason is that there is no real Bazaar support for Eclipse whereas subversion is fully integrated in Eclipse.
+And that makes my developer life much easier.</p>
+<p><a href="http://td4j.sourceforge.net/">http://td4j.sourceforge.net/</a></p>
+BODY]]

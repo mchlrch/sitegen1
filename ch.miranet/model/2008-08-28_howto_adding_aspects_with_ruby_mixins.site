@@ -1,0 +1,92 @@
+post howto_adding_aspects_with_ruby_mixins (
+  group:    howto
+  title:    "Adding aspects with Ruby mixins"
+  refTitle: "Adding aspects with Ruby mixins"
+  created:  2008-08-28 15:05:00 +01:00
+  
+// Tags: mixin, ruby
+// Posted in Coding
+
+) [[INTRO
+Java has a single inheritance model. A class can therefore only extend from one base class.
+INTRO]]
+[[BODY
+<p>This keeps the object model simple - and simple is good. As a consequence, this inheritance relationship is more precious
+than other associations between classes.</p>
+
+<blockquote><p>There can be only one</p></blockquote>
+
+<p>A common design guideline is to favor delegation over inheritance, that way a model can evolve more freely.</p>
+<p>Now, let&#8217;s consider an implementation of the well known <a href="http://en.wikipedia.org/wiki/Observer_pattern">Observer Pattern</a>.
+If I have a domain model and want to turn the domain objects into observable objects, I basically have to provide methods for
+registration and de-registration of observers/listeners, keep track of the registrations and fire events upon change of the domain objects state.
+I have several options for the design:</p>
+
+<ol>
+<li>Implement the observable logic in a common base class and make all domain classes inherit from it</li>
+<li>Implement the observable logic in a support class. All domain classes implement the <em>IObservable</em> interface and simply delegate to the support class</li>
+<li>Use some AOP framework to do the black magic</li>
+</ol>
+
+<p>Option 1. keeps the domain objects code clean but wastes the precious inheritance for infrastructure purposes.</p>
+<p>Option 2. uses friendly delegation but clutters the domain classes code.</p>
+<p>Option 3. leaves no traces in the source code but is harder to read and maintain as the observable aspect of the domain objects
+is cut out of the source completely and is only represented in a declarative way.</p>
+
+<p>Overall, I favor Option 2 but am not satisfied with it. Instead of solving the problem in Java, I started to wonder how this could be solved in Ruby.
+After some research on the net, I knew that mixins can do the trick.</p>
+
+<pre>
+<code>mira@moe:~/wdir/ruby$ cat mixin.rb
+
+<strong>module Observable</strong>
+def fire_property_change(source, property, old, new)
+  if ! @listeners.nil?
+    @listeners.each do |l|
+      l.property_changed(source, property, old, new)
+    end
+  end
+end
+
+def add_property_change_listener(l)
+  @listeners = ( @listeners || [] )
+  @listeners &lt;&lt; l
+end
+end
+
+<strong>class Person</strong>
+<strong>include Observable</strong>
+
+attr_accessor :nick
+
+def nick=(nick)
+  old = @nick
+  @nick = nick
+  fire_property_change(self, :nick, old, nick)
+end
+end
+
+<strong>class PropertyChangeListener</strong>
+
+def property_changed(source, property, old, new)
+  puts "property_changed: #{source.class}.#{property.to_s}  #{source.to_s}"
+  puts "  old: #{old}"
+  puts "  new: #{new}"
+end
+end
+
+p = Person.new
+p.add_property_change_listener(PropertyChangeListener.new)
+
+p.nick = "Joe"
+p.nick = "Jim"
+
+mira@moe:~/wdir/ruby$ ruby mixin.rb
+property_changed: Person.nick  #&lt;Person:0xb7c67b10&gt;
+  old:
+  new: Joe
+property_changed: Person.nick  #&lt;Person:0xb7c67b10&gt;
+  old: Joe
+  new: Jim</code>
+</pre>
+BODY]]

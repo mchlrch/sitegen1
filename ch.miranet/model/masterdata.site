@@ -24,5 +24,36 @@ redirections forward (
 	      -> td4j_v106_released,
 	  
 	redirect "2010/03/25/typesafe-access-to-a-generic-map/"
-	      -> howto_typesafe_access_to_generic_map
+	      -> howto_typesafe_access_to_generic_map,
+	      
+    redirect "2010/03/04/no-npes-in-scala-option-type-and-notnull-trait/"
+	      -> howto_no_npes_in_scala,
+	      
+    redirect "2009/08/25/first-release-of-td4j-available/"
+	      -> td4j_first_release_available,
+	      
+    redirect "2009/05/05/in-ubuntu-we-trust/"
+	      -> seed_in_ubuntu_we_trust,
+	      
+    redirect "2009/03/27/collection-producing-for-loop-in-scala/"
+	      -> seed_collection_producing_for_loop_in_scala,
+	      
+    redirect "2009/02/02/td4j-moved-to-sfnet/"
+	      -> td4j_moved_to_sfnet,
+	      
+    redirect "2008/12/16/homegrown-java-mixins/"
+	      -> howto_homegrown_java_mixins,
+	      
+    redirect "2008/10/02/remote-debugging-a-java-webstart-application/"
+	      -> howto_remote_debugging_java_webstart_application,
+	      
+    redirect "2008/09/23/jdbc-over-ssh/"
+	      -> howto_jdbc_over_ssh,
+	      
+    redirect "2008/09/04/first-steps-with-td4j/"
+	      -> td4j_first_steps,
+	      
+    redirect "2008/08/28/adding-aspects-with-ruby-mixins/"
+	      -> howto_adding_aspects_with_ruby_mixins
+	      
 )

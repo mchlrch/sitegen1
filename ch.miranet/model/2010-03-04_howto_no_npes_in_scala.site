@@ -1,0 +1,99 @@
+post howto_no_npes_in_scala (
+  group:    howto
+  title:    "No NPEs in Scala - Option type and NotNull trait"
+  refTitle: "No NPEs in Scala - Option type and NotNull trait"
+  created:  2010-03-04 21:26:00 +01:00
+  
+// Tags: scala
+// Posted in Coding
+
+) [[INTRO
+Scalas solution to avoid null pointer exceptions has two parts; Option type and NotNull trait.
+INTRO]]
+[[BODY
+<p>The <em>Option</em> type comes into place where its legal not to have a concrete object value. The advantage over using null instead - as one might do in Java - is that you have the distinction between &#8220;value might be null&#8221; and &#8220;value is never null&#8221; baked into the type system.</p>
+<pre><code>scala&gt; <strong>val pets = Map("Michael" -&gt; "Dog", "Fred" -&gt; "Cat")</strong>
+
+pets: scala.collection.immutable.Map[java.lang.String,java.lang.String]
+  = Map(Michael -&gt; Dog, Fred -&gt; Cat)
+
+scala&gt; <strong>pets get "Michael"</strong>
+res0: Option[java.lang.String] = Some(Dog)
+
+scala&gt;<strong> pets get "Jim"</strong>
+res1: Option[java.lang.String] = None</code></pre>
+<p>That way, the compiler helps you not to get NPEs by forcing you to look inside the Option to get to the value itself. </p>
+<pre><code>scala&gt; <strong>pets get "Michael" match {</strong>
+
+    <strong> | case Some(petName) =&gt; petName</strong>
+    <strong> | case None =&gt; "NO_PET"</strong>
+    <strong> | }</strong>
+res2: java.lang.String = Dog</code></pre>
+
+<p>In places where a value is mandatory, one can mixin the <em>NotNull</em> trait. Doing so, the compiler will check every assignment to this type and complain in places where null is assigned.</p>
+<pre><code>scala&gt; <strong>case class Pet(name: String) extends NotNull</strong>
+defined class Pet
+
+scala&gt; <strong>val lia = Pet("lia")</strong>
+lia: Pet = Pet(lia)
+
+scala&gt; <strong>val nobody: Pet = null</strong>
+
+&lt;console&gt;:6: error: type mismatch;
+ found   : Null(null)
+ required: Pet
+       val nobody: Pet = null
+                         ^</code></pre>
+<p>A person who can optionally have a pet, might look like this:</p>
+<pre><code>scala&gt; <strong>case class Person(name: String, pet: Option[Pet])</strong>
+defined class Person
+
+scala&gt; <strong>val michael = Person("Michael", Some(lia))</strong>
+michael: Person = Person(Michael,Some(Pet(lia)))
+
+scala&gt; <strong>michael.pet get</strong>
+
+res0: Pet = Pet(lia)</code></pre>
+<p>Unfortunately we don&#8217;t get away from NPEs that easy, though. Scala has a tight integration with Java, which is one of its biggest strength. But this tight integration is twofold; Right now, the Scala library itself doesn&#8217;t use the NotNull trait. </p>
+<p>This leads us quickly back to the initial problem we are trying to avoid:</p>
+<pre><code>scala&gt; <strong>val jim = Person("Jim", null)</strong>
+jim: Person = Person(Jim,null)
+
+scala&gt; <strong>jim.pet get</strong>
+java.lang.NullPointerException
+...</code></pre>
+
+<p>For now, I ended up with the following definition of Person:</p>
+<pre><code>scala&gt;<strong> class Person private (val name: String, val pet: Option[Pet]) {</strong>
+    <strong> | def this(name: String) = this(name, None)</strong>
+   <strong>  | def this(name: String, pet: Pet) = this(name, Some(pet))</strong>
+    <strong> | }</strong>
+
+defined class Person
+
+scala&gt; <strong>val me = new Person("Michael", lia)</strong>
+me: Person = Person@a5ce92
+
+scala&gt; <strong>val jim = new Person("Jim")</strong>
+jim: Person = Person@17820c3
+
+scala&gt; <strong>def petName(person: Person) = person.pet match {</strong>
+    <strong> | case Some(pet) =&gt; pet.name</strong>
+
+    <strong> | case None =&gt; "NO_PET"</strong>
+    <strong> | }</strong>
+petName: (Person)String
+
+scala&gt; <strong>petName(me)</strong>
+res1: String = lia
+
+scala&gt; <strong>petName(jim)</strong>
+
+res2: String = NO_PET
+
+scala&gt; <strong>val jim = new Person("Jim", null)</strong>
+&lt;console&gt;:7: error: type mismatch;
+ found   : Null(null)
+ required: Pet
+       val jim = new Person("Jim", null)</code></pre>
+BODY]]

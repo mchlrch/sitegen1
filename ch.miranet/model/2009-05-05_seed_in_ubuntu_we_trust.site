@@ -1,0 +1,38 @@
+post seed_in_ubuntu_we_trust (
+  group:    seed
+  title:    "In Ubuntu We Trust"
+  refTitle: "In Ubuntu We Trust"
+  created:  2009-05-05 19:15:00 +01:00
+  
+// Tags: linux
+// Posted in Uncategorized
+) [[INTRO
+And sometimes even a bit too much. I’m running Xubuntu for several years now and never had any big issue with it.
+But last weekend, I finally got my share.
+INTRO]]
+[[BODY
+<p>I ran the usual updates on my system (Xubuntu 8.10) and was suddenly missing the Gnome panels after logging in to my xfce session.
+Normally I would search the web for possible causes, but this time I decided to just follow the suggestion of Ubuntus Update Manager,
+that told me version 9.04 is available. Without giving it any further thoughts, I started the upgrade process.
+The upgrade itself went smooth, no hickups whatsoever. But afterwards my xfce session stopped working completely.
+So I used the Gnome session as fallback, which worked. But suddenly the system froze. A completely frozen system (not even reacting to Ctrl-Alt-F1) is something I am not used to anymore.</p>
+
+<p>The reset button has lost its virginity.</p>
+<p>After passing a few ice ages I got fed up. I tried running Xubuntu 9.04 from CD.
+Again, strange things happend; after choosing the language and starting up the xfce session,
+my USB keyboard stopped working. WTF! Reboot, and still the same behavior.</p>
+
+<p>It was time to clean the slate and rollout Xubuntu 8.10 again. But not without learning a lesson!
+<strong>Always</strong> try out a new distro version before replacing your working system.
+To do that, I decided to partition wisely this time;
+keeping my home on a separate partition and creating two pairs of <em>/boot</em> and <em>/</em>
+to be able to always have two systems at the same time. One for a working system and one for tryouts:</p>
+<pre>
+<code>mira@apu:~$ df -h |grep sda
+/dev/sda6              23G  2.3G   20G  11% /
+/dev/sda1              92M   31M   56M  36% /boot
+/dev/sda8             641G   33G  577G   6% /home</code></pre>
+
+<p>sda5 is <em>/boot</em> for the second system<br />
+sda7 is <em>/</em> for the second system</p>
+BODY]]

@@ -1,0 +1,31 @@
+post howto_remote_debugging_java_webstart_application (
+  group:    howto
+  title:    "Remote debugging a Java WebStart Application"
+  refTitle: "Remote debugging a Java WebStart Application"
+  created:  2008-10-02 15:27:00 +01:00
+  
+// Tags: debug, java, webstart
+// Posted in Coding
+
+) [[INTRO
+These are brief instructions on how to do remote debugging with Java WebStart.
+INTRO]]
+[[BODY
+<p>To debug a WebStart application in Java 6, start it we remote debugging enabled;</p>
+<pre>
+<code>C:\Programme\java\jre1.6.0_01\bin\javaws.exe
+   -J-Xdebug -J-Xnoagent
+   -J-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8200
+   c:\foo.jnlp</code>
+
+</pre>
+<p>Then connect your debugger to the specified port (here: 8200)</p>
+<p>If the debugger cannot connect, verify with <em>netstat</em> that no Personal Firewall or AntiVirus is blocking the connection.</p>
+<p>To achieve the same with Java versions prior 6 (1.4, 5), set the environment variable <strong>JAVAWS_VM_ARGS</strong>
+to the arguments above, but only write &#8216;-J&#8217; once before the first argument.</p>
+<pre>
+<code>set JAVAWS_VM_ARGS=-J-Xdebug -Xnoagent
+   -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8200
+C:\Programme\java\jre1.6.0_01\bin\javaws.exe c:\foo.jnlp</code>
+</pre>
+BODY]]

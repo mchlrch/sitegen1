@@ -1,0 +1,27 @@
+post seed_collection_producing_for_loop_in_scala (
+  group:    seed
+  title:    "Collection producing for-loop in Scala"
+  refTitle: "Collection producing for-loop in Scala"
+  created:  2009-03-27 23:15:00 +01:00
+  
+// Tags: scala
+// Posted in Coding
+) [[INTRO
+An unusual way to create a collection with the numbers 0 .. 99 in Scala.
+INTRO]]
+[[BODY
+<p>The more I actually write code in <a href="http://www.scala-lang.org/">Scala</a>, the more I am impressed with it.
+I love OO and I already write my Java code in a somewhat functional way.
+I value type safety very much and don&#8217;t want to give it away, so Scala is a natural fit for me.</p>
+
+<p>Here is my highlight of today; the (nested) for-loop that produces a collection value</p>
+
+<pre>
+<code>val numbers =
+    for {
+      n1 &lt;- 0 to 9
+      n0 &lt;- 0 to 9
+    } yield 10*n1 + n0
+
+numbers.foreach(println)</code></pre>
+BODY]]

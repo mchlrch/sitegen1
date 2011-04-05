@@ -1,0 +1,77 @@
+post howto_jdbc_over_ssh (
+  group:    howto
+  title:    "JDBC over SSH"
+  refTitle: "JDBC over SSH"
+  created:  2008-09-23 14:51:00 +01:00
+  
+// Tags: java, jdbc, ssh
+// Posted in Coding
+
+) [[INTRO
+This is a short summary about how to access a database using JDBC through a secure SSH tunnel.
+INTRO]]
+[[BODY
+<p>On Unix boxes, the SSH daemon is usually running by default, which makes SSH tunnels a good choice for making secure connections
+to services running on Unix boxes.</p>
+
+<p>Prerequisites:</p>
+<ol>
+<li>Generate SSH keypair:<br />
+<code>$ ssh-keygen -t dsa -f ssh/id_dsa</code>
+</li>
+<li>Add public key to authorized_keys on SSH server machine (user=<em>foo</em>):<br />
+<code>$ cat id_dsa.pub &gt;&gt; ~foo/.ssh/authorized_keys</code>
+</li>
+<li>Get <a href="http://www.jcraft.com/jsch/">JSch library</a> - Java implementation of SSH2</li>
+</ol>
+
+<p>We use the SSH tunnel to do a local port forwarding. Doing so, all requests to a designated local port on the client machine
+are forwarded thru the tunnel to the destination port on the remote host. The remote host can be the same as the SSH server,
+but can also be a different host reachable by the SSH server.</p>
+
+<p>ssh_server: SSH server name or IP<br />
+ssh_user: SSH user name</p>
+<p>lport: local port on the client machine (example here: 3366)<br />
+rhost: remote host running the database<br />
+rport: remote port to access the database (3306 for MySQL)</p>
+<pre>
+<code>// SSH Tunnel
+Session session = null;
+try {
+  final JSch jsch = new JSch();
+  session = jsch.getSession(ssh_user, ssh_server, 22);
+
+  final Hashtable config = new Hashtable();
+  config.put("StrictHostKeyChecking", "no");
+  session.setConfig(config);
+  jsch.addIdentity("ssh/id_dsa");
+
+  session.connect();
+
+  int assigned_port = session.setPortForwardingL(lport, rhost, rport);
+
+} catch (Exception e) {
+  e.printStackTrace();
+  System.exit(-1);
+}    
+
+// DB connection
+Connection con = null;
+try {
+  Class.forName("com.mysql.jdbc.Driver");
+  con = DriverManager.getConnection("jdbc:mysql://localhost:3366/db_name", "db_user", "db_pass");
+
+  // access  database
+
+} catch (Exception ex) {
+  ex.printStackTrace();
+  System.exit(-1);
+} finally {
+  try {
+    if (con != null) con.close();
+  } catch (Exception ex) {/* NOP */}
+}
+
+session.disconnect();    </code>
+</pre>
+BODY]]

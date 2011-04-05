@@ -1,0 +1,19 @@
+post td4j_first_release_available (
+  group:    td4j
+  title:    "First release of td4j available"
+  refTitle: "First release available"
+  created:  2009-08-25 20:30:00 +01:00
+  
+// Tags: td4j
+// Posted in Coding, Project Updates
+
+) [[INTRO
+Today, the first offical version of td4j has been released to the general public.
+INTRO]]
+[[BODY
+<p>td4j is already useable for prototyping, so I decided to get the
+<a href="http://sourceforge.net/projects/td4j/files/">first release</a> out.
+I follow the Ubuntu versioning scheme, where year and month form the version number.
+So this first release is named <em>9.8</em>.</p>
+<p>To get started with td4j, check out the <a href="http://sourceforge.net/apps/trac/td4j/">tutorials</a>.</p>
+BODY]]

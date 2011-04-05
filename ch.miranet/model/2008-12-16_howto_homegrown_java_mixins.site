@@ -1,0 +1,90 @@
+post howto_homegrown_java_mixins (
+  group:    howto
+  title:    "Homegrown Java mixins"
+  refTitle: "Homegrown Java mixins"
+  created:  2008-12-16 13:56:00 +01:00
+  
+// Tags: java, mixin
+// Posted in Coding
+
+) [[INTRO
+Lets be nostalgic and think about the cell phone capabilities five years ago.
+Cell phones were basically phones, not much more.
+Cameras were cameras and music players could play music.
+INTRO]]
+[[BODY
+<pre>
+<code>public interface Phone {
+  void call();
+}
+
+public interface Camera {
+  void takePicture();
+}
+
+public interface MusicPlayer {
+  void playMusic();
+}</code>
+
+</pre>
+<p>Now how about combining the capabilities of phone, camera and music player into one device? - Let&#8217;s call it MyPhone!</p>
+<pre>
+<code>interface MyPhone extends Phone, Camera, MusicPlayer {
+}</code>
+</pre>
+<p>In Java, composition of functionality is commonly achieved with delegation in so called forwarding classes.
+An implementation looks like this.</p>
+<pre>
+<code>static class MyPhoneImpl implements MyPhone {
+
+  private final Phone phone;
+  private final Camera camera;
+  private final MusicPlayer player;
+
+  MyPhoneImpl(Phone phone, Camera camera, MusicPlayer player) {
+    this.phone = phone;
+    this.camera = camera;
+    this.player = player;
+  }
+
+  @Override
+  public void call() {
+    phone.call();
+  }
+
+  public void takePicture() {
+    camera.takePicture();
+  };
+
+  @Override
+  public void playMusic() {
+    player.playMusic();
+  }
+}</code>
+</pre>
+<p>No black magic here, but implementing all those forwarding methods is tedious. Moreover we have a very basic phone here,
+still laking capabilities like messaging, address book, recording movies, etc.</p>
+
+<p>Other programming languages have support for <a href="http://en.wikipedia.org/wiki/Mixin">mixins</a> or
+<a href="http://en.wikipedia.org/wiki/Trait_(abstract_type)">traits</a>.
+They are very useful for componentized software development because they encourage code reuse without the burden of multiple inheritance.</p>
+
+<p>Unfortunately, Java doesn&#8217;t support mixins (yet?).
+But Java has its <a href="http://java.sun.com/javase/6/docs/api/java/lang/reflect/Proxy.html">Proxy</a>
+facility to accomplish interface implementation and delegation dynamically
+(some more info <a href="http://java.sun.com/j2se/1.3/docs/guide/reflection/proxy.html">here</a>).
+With this Proxy, we are able to build our own mixin solution.</p>
+
+<p>Exactly where are we heading? Well, we want a simple solution for our MyPhone implementation that relieves us
+from the burden of writing the MyPhoneImpl class ourselves, something like this:</p>
+<pre>
+<code>final Phone phone = new PhoneImpl();
+final Camera camera = new CameraImpl();
+final MusicPlayer player = new MusicPlayerImpl();
+
+final MyPhone myPhone = ObjectBlender.createProxy(MyPhone.class, phone, camera, player);</code>
+</pre>
+<p>ObjectBlender takes care of implementing the MyPhone interface by auto-wiring the forwarding methods to the matching delegates
+and creating the necessary proxy instance dynamically using Javas Proxy facility. Voilà!</p>
+<p><a href="http://www.miranet.ch/src/javamixin/">Source code is here</a>.</p>
+BODY]]
