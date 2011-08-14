@@ -1,0 +1,67 @@
+post releasing_maven_mercurial_dvcs (
+  group:    howto
+  title:    "Releasing with Maven and Mercurial DVCS"
+  refTitle: "Releasing with Maven and Mercurial DVCS"
+  created:  2011-08-14 19:08:00 +01:00
+  
+// (UTC+1 - Achtung: während DST (Sommerzeit) 1h abziehen)
+
+) [[INTRO
+How to do a Maven release using Mercurial and getting the release plugin to work
+with local repository clones.
+INTRO]]
+
+[[BODY
+<p>Distributed Version Control Systems (DVCS) like Git and Mercurial don't need a central master repository.
+To work with an existing repository (A), the first step is to get a local copy (B) by cloning it.
+The resulting local clone (B) is a complete, self-contained and independent copy of the original repository (A).
+A perfect sandbox. Local commits that are made to (B) are not visible in (A) as long as you don't decide to actively push them back to (A).   
+</p>
+
+<p>The <a href="http://maven.apache.org/plugins/maven-release-plugin/index.html">Maven release plugin</a>
+automatically performs several steps to make sure a release can be reproduced from source. I only list the main steps here:
+<ol>
+<li>prepare: tagging the code baseline in VCS</li>
+<li>perform: clean checkout of tagged baseline from VCS</li>
+<li>perform: build, test and deploy to a Maven repository</li>
+</ol>
+</p>
+
+<p>If a remote VCS is used (e.g. Subversion), the second step fetches the baseline over the network.
+If the third or any later step fails, a retry beginning at step two will fetch the sources again from VCS over the network.
+Moreover, during the two-phase release process (release:prepare, release:perform) Maven keeps some control information in temporary files
+inside the project directory. If you happen to delete those files, for example by reverting, Maven doesn't know anymore that <em>release:prepare</em>
+was already done (and therefore the VCS has already been tagged).
+</p>
+
+<p>Lots of opportunities for possible failure exist. By using a DVCS, one can let Maven interact with a temporary local repository.
+In case of failure, this repository is easily disposable. In case of success, the temporary repository is pushed back to the repository
+it was cloned from.
+<p>
+
+<pre><code>mira@apu:~/temp/hg_staging$ hg clone https://bitbucket.org/mira/mira-commons
+mira@apu:~/temp/hg_staging$ hg clone mira-commons mira-commons_baseline
+
+mira@apu:~/temp/hg_staging/mira-commons_baseline$ mvn release:prepare release:perform -Dstaging.hg.repo.url=/home/mira/temp/hg_staging/mira-commons
+
+mira@apu:~/temp/hg_staging/mira-commons$ hg push
+</code></pre>
+
+The location of the staging repository is passed in via the property <em>-Dstaging.hg.repo.url</em>.
+The relevant section in the POM looks like this:
+
+<pre><code>&lt;project
+...
+    &lt;scm&gt;
+        &lt;connection&gt;scm:hg:http://bitbucket.org/mira/mira-commons&lt;/connection&gt;
+        &lt;developerConnection&gt;scm:hg:${staging.hg.repo.url}&lt;/developerConnection&gt;
+        &lt;url&gt;http://bitbucket.org/mira/mira-commons&lt;/url&gt;
+    &lt;/scm&gt;
+...        
+&lt;/project&gt;
+</code></pre>
+
+My setup is based on this
+<a href="http://weblogs.java.net/blog/fabriziogiudici/archive/2009/10/29/fixing-two-problems-maven-mercurial-hudson">post of Fabrizio Giudici</a>.
+Fabrizio goes even further and also stages the generated Maven artifacts.
+BODY]]
