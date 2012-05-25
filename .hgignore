@@ -1,3 +1,4 @@
+^.metadata/
 ^ch.miranet.dsl.site/src-gen/
 ^ch.miranet.dsl.site/plugin.xml
 ^ch.miranet.dsl.site/plugin.xml_gen

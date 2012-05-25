@@ -11,3 +11,10 @@
 - CSS no-print für header+footer (so wie bei fsf.org)
 - CSS debugging mit firebug
 - SimpleContent composite für hierarchische seitenstrukturen ('projects/td4j')
+
+- miranet.ch:
+  - redirections auf externe Seiten unterstützen
+    - http://www.miranet.ch/projects/mira-commons
+        --> https://bitbucket.org/mira/mira-commons
+    - http://www.miranet.ch/projects/linknotes
+        --> github page
