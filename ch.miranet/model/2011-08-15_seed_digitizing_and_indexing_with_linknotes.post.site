@@ -1,0 +1,109 @@
+post digitizing_and_indexing_with_linknotes (
+  group:    seed
+  title:    "Digitizing and indexing handwritten notes and sketches with linknotes"
+  refTitle: "Digitizing and indexing handwritten notes"
+  created:  2012-05-26 22:08:00 +01:00
+  
+// (UTC+1 - Achtung: während DST (Sommerzeit) 1h abziehen)
+
+) [[INTRO
+I made it a habit to jot down ideas in a paper notebook. Those ideas range from conceptual sketches to concrete todo lists
+and are either related to concrete projects I'm working on or candidates for future projects.
+In short I write down everything that seems worth to be persisted, even if there's no immediate use for it.
+Paper notebooks have the disadvantage that they support only sequential data access - one needs to flip through all pages to find a particular note.
+The more notes one has, the more this disadvantage shows.
+INTRO]]
+
+[[BODY
+<p>To permit easier recovery of specific notes, I implemented the following system:
+<ol>
+  <li>scan new pages from the notebook periodically to get a digital representation (bitmap images)</li>
+  <li>tag the images with keywords which classify their content (topic, project, ...)</li>
+  <li>create a browsable index based on the tags</li>
+</ol>
+</p>
+
+<p>
+The two driving goals for the design process were:
+<ol>
+  <li>create minimal work overhead for the system user (me)</li>
+  <li>just write the absolutely necessary code (favor a straightforward and pragmatic implementation)</li>
+</ol>
+</p>
+
+<p>
+This led to the following key design decisions:
+<ol>
+  <li>tags are contained in the filename: addding/editing/deleting tags means renaming a file</li>
+  <li>tag parsing is simplified by naming convention: fixed index in filename marks begin of tag section</li>
+  <li>browsable index is simply one directory for each tag containing symlinks to all related images</li>
+  <li>using the index means launching an image viewer inside the directory for a given tag</li>
+</ol>
+</p>
+
+<p>Let's have a look at an example:</p>
+<p><img src="http://www.miranet.ch/static/img/linknotes_sample.png" alt="Linknotes Sample" title="Linknotes Sample" width="585" height="254" class="alignnone size-medium wp-image-6" />
+
+<ul>
+<li>Image A contains two unrelated sections. The first section has one single tag, the second section has two tags.</li>
+<li>Image B contains three unrelated sections. Each section has one single tag.</li>
+</ul>
+</p>
+
+<p>
+I don't bother to split an image into two if a notebook page contains two unrelated sections.
+Tags are applied to an image, not to a section and sections exist only conceptually.
+
+<pre><code>mira@apu:~/temp/linknotes_test$ tree
+.
+|-- index
+|-- linknotes.jar
+`-- notes
+    |-- 2011-07-13_nb_001_001_td4j_mdsd_sitegen.jpg
+    `-- 2011-07-13_nb_001_002_mdsd_td4j_semweb.jpg
+
+2 directories, 3 files</code></pre>
+
+Filename tokens:
+<ul>
+<li>2011-07-13: date of the first section on the page</li>
+<li>nb_001_001: notebook #1, page #1 (unique page ID)</li>
+<li>td4j_mdsd_sitegen: tags</li>
+</ul>
+
+In this example, there are four different tag-values: td4j, mdsd, sitegen, semweb
+
+<p>
+If we run the indexer on the examples, we get the following result:
+
+<pre><code>mira@apu:~/temp/linknotes_test$ java -jar linknotes.jar notes/ index/
+notes: /home/mira/temp/linknotes_test/notes
+index: /home/mira/temp/linknotes_test/index
+
+mira@apu:~/temp/linknotes_test$ tree
+.
+|-- index
+|   |-- mdsd
+|   |   |-- 2011-07-13_nb_001_001_td4j_mdsd_sitegen.jpg -> /home/mira/temp/linknotes_test/notes/2011-07-13_nb_001_001_td4j_mdsd_sitegen.jpg
+|   |   `-- 2011-07-13_nb_001_002_mdsd_td4j_semweb.jpg -> /home/mira/temp/linknotes_test/notes/2011-07-13_nb_001_002_mdsd_td4j_semweb.jpg
+|   |-- semweb
+|   |   `-- 2011-07-13_nb_001_002_mdsd_td4j_semweb.jpg -> /home/mira/temp/linknotes_test/notes/2011-07-13_nb_001_002_mdsd_td4j_semweb.jpg
+|   |-- sitegen
+|   |   `-- 2011-07-13_nb_001_001_td4j_mdsd_sitegen.jpg -> /home/mira/temp/linknotes_test/notes/2011-07-13_nb_001_001_td4j_mdsd_sitegen.jpg
+|   `-- td4j
+|       |-- 2011-07-13_nb_001_001_td4j_mdsd_sitegen.jpg -> /home/mira/temp/linknotes_test/notes/2011-07-13_nb_001_001_td4j_mdsd_sitegen.jpg
+|       `-- 2011-07-13_nb_001_002_mdsd_td4j_semweb.jpg -> /home/mira/temp/linknotes_test/notes/2011-07-13_nb_001_002_mdsd_td4j_semweb.jpg
+|-- linknotes.jar
+`-- notes
+    |-- 2011-07-13_nb_001_001_td4j_mdsd_sitegen.jpg
+    `-- 2011-07-13_nb_001_002_mdsd_td4j_semweb.jpg
+
+6 directories, 9 files
+</code></pre>
+</p>
+
+<p>
+Sourcecode is hosted at <a href="https://bitbucket.org/mira/linknotes">bitbucket</a>.
+</p>
+
+BODY]]
