@@ -4,9 +4,16 @@ content about (
 ) [[BODY
 <p>My name is Michael Rauch. I live in Biel/Bienne, Switzerland.</p>
 
-<p>I&#8217;m a software engineer, agile practitioner, aficionado of free software and open standards and fellow of the Free Software Foundation Europe.</p>
-<p>My first programming experience goes back to 1995 with Turbo Pascal. Since then, I have been in contact with a bunch of development stacks, including Delphi, Assembler, LabView, Tcl/Tk, C, C++, Perl, PHP, Lisp, Scheme, Prolog, Python, Ruby, Smalltalk, Java and Scala.</p>
-<p>In my current professional efforts, I'm building automation toolchains based on MDSD concepts leveraging the Eclipse Modeling Platform.</p>
-<p>My processing capabilities of natural languages are less distinct. I can do with German, English, French and Spanish.</p>
+<p>I&#8217;m a software engineer, agile practitioner, aficionado of free software and open standards and 
+fellow of the <a href="http://www.fsfe.org/">Free Software Foundation Europe</a>.</p>
+<p>My first programming experience goes back to 1995 with Turbo Pascal. Since then, I have used a bunch of languages, including Assembler, Delphi, LabView, Tcl/Tk, C, C++, Perl, PHP, Prolog, Python, Ruby, Java and Scala.</p>
+<p>In my professional life, I'm mainly working with JavaEE and the Eclipse Modeling Platform (Xtext and friends).</p>
 <p><em>Free people use free software!</em></p>
+
+<script type="text/javascript">
+this.fsf_widget_size = "normal";
+this.fsf_associate_id = "2442";
+</script>
+<script type="text/javascript" src="http://www.fsf.org/graphics/widget/global/widget.js"></script>
+
 BODY]]

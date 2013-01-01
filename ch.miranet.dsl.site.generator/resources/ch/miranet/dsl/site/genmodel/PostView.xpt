@@ -30,6 +30,14 @@
 
 <p><a href="«this.page.relativePathTo(this.post.primaryPage(this.page.site))»">Read the full article</a></p>
 
+
+<script type="text/javascript">
+this.fsf_widget_size = "normal";
+this.fsf_associate_id = "2442";
+</script>
+<script type="text/javascript" src="http://www.fsf.org/graphics/widget/global/widget.js"></script>
+
+
 </div> <!-- content -->
 «ENDLET»
 «ENDDEFINE»
