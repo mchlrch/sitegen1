@@ -1,0 +1,44 @@
+post agile_architecture (
+  group:    architecture
+  title:    "Agile Architecture"
+  refTitle: "Agile Architecture"
+  created:  2015-03-28 10:15:00 +01:00
+  
+// (UTC+1 - Achtung: während DST (Sommerzeit) 1h abziehen)
+
+) [[INTRO
+The topic of <a href="http://berner-architekten-treffen.ch">BAT</a> #30 was Agile Architecture.
+This post sums up my takeaways from the meetup.
+INTRO]]
+
+[[BODY
+<p>Beeing agile:
+<ul>
+  <li>adaptable to changing requirements</li>
+  <li>orientation towards uncertainty</li>
+  <li>learn and teach by <a href="http://martinfowler.com/bliki/ShuHaRi.html">ShuHaRi</a></li>
+</ul>
+</p>
+
+
+<p>Architectural aspects:
+<ul>
+  <li>cross-cutting requirements and decisions</li>
+  <li>conceptual integrity</li>
+  <li>risk minimization</li>
+</ul>
+</p>
+
+
+<p>The architect:
+<ul>
+  <li>actively facilitates communication</li>
+  <li>acts as a service provider and supporter</li>
+  <li>postpones decisions until the last reasonable moment (keeping options open)</li>
+  <li>solves todays problems and doesn't create to many new ones for the future (balancing of technical debts)</li>
+  <li>promotes routine</li>
+  <li>enforces guidelines</li>
+</ul>
+</p>
+
+BODY]]
