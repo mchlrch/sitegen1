@@ -7,11 +7,13 @@ post agile_architecture (
 // (UTC+1 - Achtung: während DST (Sommerzeit) 1h abziehen)
 
 ) [[INTRO
-The topic of <a href="http://berner-architekten-treffen.ch">BAT</a> #30 was Agile Architecture.
+The topic of BAT #30 was Agile Architecture.
 This post sums up my takeaways from the meetup.
 INTRO]]
 
 [[BODY
+<h3>Takeaways from the <a href="http://berner-architekten-treffen.ch">BAT</a> meetup #30 - Agile Architecture</h3>
+
 <p>Beeing agile:
 <ul>
   <li>adaptable to changing requirements</li>
