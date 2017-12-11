@@ -12,6 +12,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
+  <link rel="self" href="http://www.miranet.ch/feed.atom" />
   <title>miranet.ch - thoughts and writings of Michael Rauch</title>
   <link href="«baseURL»"/>
     <updated>«this.domainModel.posts.first().metaData.createdAt.formatRFC3339TS()»</updated>
