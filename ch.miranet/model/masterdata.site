@@ -1,8 +1,8 @@
 // groups: howto, seed, td4j, projectXY, ...
 
-groups (howto, td4j, seed, architecture)
+groups (howto, td4j, seed, architecture, reflection)
 
-entryPoints navigation (about, project_td4j)
+entryPoints navigation (about)
 
 redirections forward (
 
