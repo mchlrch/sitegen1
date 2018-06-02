@@ -1,48 +1,63 @@
 Der Metamux Kompass - Ein ethischer Kompass für Fortschritt
 
-In diesem Beitrag möchte ich aufzeigen, dass die Hoffnung auf eine bessere Welt nicht unbegründet ist.
+In diesem Beitrag möchte ich aufzeigen, dass die Hoffnung auf eine bessere Welt nicht unbegründet ist :-) &#x1F603
 Ich formuliere zu diesem Zweck eine These zur Qualifizierbarkeit von Fortschritt und beschreibe ein Instrument, den Metamux Kompass,
-der es ermöglichen soll den Fortschritt am richtigen Ort zu suchen.
+welches uns dabei helfen kann den Fortschritt am richtigen Ort zu suchen. [There is an english version of this article].
 
-Meine These beginnt mit einer Behauptung:
-In jeder Gesellschaft gibt eine genügend kleine Anzahl essenzieller Stützpfeiler, so dass es jeder Gesellschaft
-möglich ist, sich durch aktives Schützen und Stärken dieser Stützpfeiler vor einem selbstverschuldeten Kollaps oder Zerfall zu bewahren.
-Dies gilt prinzipiell für Gesellschaften beliebiger Grösse, sowohl für kleinste ethnische Gruppierungen wie auch
+Vorab ein kurzer Hinweis zum Hintergrund dieses Beitrags: In einem [vorgängigen Artikel] habe ich über die Zusammenhänge und Wechselwirkungen zwischen
+Privatheit, Autonomie und Demokratie geschrieben. Dabei habe ich auch postuliert, dass sich Autonomie, Demokratie und Zivilisierungsniveau
+gegenseitig stützen. Darauf aufbauend und erweitert mit der Erkenntnis, dass ein Zuwachs an Autonomie immer auch einen Zuwachs von Verantwortung
+impliziert, hat sich das hier beschriebene Konzept des Metamux Kompass entwickelt.
+
+Ich beginne mit einer Behauptung:
+In jeder Gesellschaft gibt es essenzielle Stützpfeiler, welche die Gesellschaft tragen. Die Anzahl dieser Stützpfeiler ist genügend klein,
+so dass es jeder Gesellschaft möglich ist, sich vor einem selbstverschuldeten Kollaps oder Zerfall zu bewahren,
+indem die Stützpfeiler aktiv geschützt und gestärkt werden.
+Dies gilt prinzipiell für Gesellschaften beliebiger Grösse, sowohl für kleine ethnische Gruppierungen wie auch
 für die Menschheit in ihrer Gesamtheit.
 
-Falls diese Behauptung zutreffend ist, so folgt daraus, dass Fortschritt qualifizierbar ist. Mit Fortschritt ist hier also nicht
-einfach das Fortschreiten der Zeit gemeint, sondern eine von der jeweiligen betroffenen Gesellschaft feststellbare qualitative
-Verbesserung beim Vergleich zweier Zeitpunkte. Stellt man also fest, das ein Stützpfeiler solider und stärker ist, als das früher der Fall war,
-dann handelt es sich um Fortschritt. Stellt man hingegen eine Schwächung oder gar den Einsturz eines Stützpfeilers fest, dann
-handelt es sich um Rückschritt.
+Falls diese Behauptung zutreffend ist, so folgt daraus, dass Fortschritt qualifizierbar ist. Mit Fortschritt ist hier nicht
+einfach das Auftauchen von Neuerungen über die Zeit gemeint, sondern eine von der Gesellschaft feststellbare, qualitative
+Verbesserung beim Vergleich zweier Zeitpunkte. Stellt man also fest, dass die Stützpfeiler der Gesellschaft stabiler und stärker geworden sind
+als dies früher der Fall war, dann handelt es sich um Fortschritt.
 
-Wenn wir zu einem späteren Zeitpunkt einen Fortschritt feststellen möchten, so müssen wir bereits heute wissen, welche Weichen dafür zu stellen sind.
-Oder anders gesagt müssen wir wissen, welches die richtigen und wichtigen Stellen sind, um dort nach dem Fortschritt zu suchen. Wir brauchen also
-einen Kompass, der uns bei der Orientierung hilft.
+Wenn wir Fortschritt aktiv unterstützen wollen, so müssen wir bereits heute wissen, welche Weichen dafür zu stellen sind.
+Oder anders gesagt müssen wir wissen, wo die richtigen und wichtigen Stellen sind, um dort nach dem Fortschritt zu suchen. Ein Kompass kann uns bei
+der Orientierung hilfreich sein.
 
-Der Metamux Kompass ist ein kognitiver Kompass, der es ermöglichen soll, den Fortschritt am richtigen Ort zu suchen. 
-Die Kalibrierung des Metamux Kompass erfolgt durch die essenziellen Stützpfeiler. Die Selektion der Stützpfeiler erfolgt auf
-der individuellen Ebene. Jede(r) wählt und kalibriert für sich. Falls Anonymität und Vertraulichkeit sichergestellt ist,
-so könnten auf demokratischem Wege individuelle Selektionen auf die gesellschaftliche Ebene verdichtet werden. 
+Der Metamux Kompass ist ein kognitiver, ethischer Kompass. Er ermöglicht es uns, den Fortschritt am richtigen Ort zu suchen.
+So wie bei einem Magnetkompass die Nadel in Richtung des magnetischen Nordpols zeigt, so ist der Metamux Kompass anhand der
+Stützpfeiler einer Gesellschaft ausgerichtet.
 
-Eine mögliche Auswahl von essentiellen gesellschaftlichen Stützpfeilern könnte wie folgt aussehen:
+Da sich Fortschritt hier über die Verbesserung des Zustands der Stützpfeiler definiert, ist zur Kalibrierung
+des Metamux Kompass lediglich die Auswahl der Stützpfeiler notwendig. Die Auswahl der Stützpfeiler
+erfolgt dabei auf der individuellen Ebene. Jede wählt diese nach eigenem Ermessen aus und kalibriert den Kompass so für sich selbst.
+Der effektive Manifestationsgrad der Stützpfeiler ist für deren Auswahl irrelevant, da sich ja die Gesellschaft der Zukunft durchaus auch
+auf emergenten oder heute noch gänzlich unbekannten Werten, Konzepten oder Kulturpraktiken abstützen könnte.
+
+Eine beispielhafte Auswahl von essentiellen gesellschaftlichen Stützpfeilern könnte wie folgt aussehen:
 - Autonomie (d.h. Selbstbestimmung) des Individuums
 - Legitimierte Macht über demokratische Prozesse
-- Gleichheit der Individuuen, frei von Diskriminierung
+- Gleichheit der Individuen, frei von Diskriminierung
 - Nachhaltige Lebensführung
 - Solidarität
 
-Mit dem Setzen von Schutzzonen um die Stützpfeiler sind auch die gedanklichen und praktischen Experimentierfelder festgelegt.
+Ausgangspunkt für die Suche des Fortschritts ist hier also ein gewollter, positiver Effekt auf die Gesellschaft.
+Ausgehend von der Wirkung wird nach der Ursache gesucht. Fortschritt ist also primär dort zu finden, wo die Stützpfeiler
+der Gesellschaft aktiv geschützt und gestärkt werden.
 
-TODO: Stützpfeiler -> Indianer-Tipi
+Wie bereits erwähnt, geschiet die Auswahl der gewollten, positiven Effekte (die zu stärkenden Stützpfeiler) auf individueller Ebene.
+Die Verdichtung der individuellen Selektionen auf die gesellschaftliche Ebene kann dann über etablierte Mechanismen erfolgen, beispielsweise
+über Lehre, Demokratie und den Markt.
 
-TODO: Neue Technologien/Kulturtechnik bewerten
+Mit dem Setzen von Schutzzonen um die Stützpfeiler können diese von Experimentierfeldern abgegrenzt werden, in welchen
+Disruption eingeschränkt stattfinden kann.
 
-Ist die gesellschaftliche Akzeptanz einer neuen Technologie/Kulturtechnik lediglich durch die Mode der Zeit
-oder durch den Wunsch nach mehr Wettbewerbsfähigkeit begründet, so ist dies wohl nicht hinreichend um besagte Technologie/Kulturtechnik
-als fortschrittlich zu qualifizieren.
+Wendet man den Metamux Kompass an, so kann man durchaus auf Erkenntnisse stossen, die auf Anhieb erstaunlich erscheinen mögen. Es lohnt sich aber,
+gerade diese Erkenntnisse genauer zu analysieren um sie besser verstehen zu können.
 
-Wendet man den Metamux Kompass an, so kann man durchaus auf Erkenntnisse stossen, die auf Anhieb paradox erscheinen mögen. Es lohnt sich aber,
-gerade diese Erkenntnisse näher unter die Lupe zu nehmen um sie selber besser verstehen zu können.
-
+Benutzt man beispielsweise die vorgängig erwähnte beispielhafte Auswahl von Stützpfeilern, dann kann man damit zum Schluss kommen,
+dass alleine die gesellschaftliche Akzeptanz einer neuen Technologie oder Kulturtechnik nicht hinreichend ist, um besagte Technologie/Kulturtechnik
+als fortschrittlich zu qualifizieren. Dies ist beispielsweise dann der Fall, wenn die Akzeptanz lediglich in der Mode der Zeit gründet.
+Oder auch dann, wenn die Akzeptanz primär durch Angst getrieben ist, beispielsweise die Angst vor dem Verlust von Wettbewerbsfähigkeit.
 
