@@ -2,7 +2,9 @@ Der Metamux Kompass - Ein ethischer Kompass für Fortschritt
 
 In diesem Beitrag möchte ich aufzeigen, dass die Hoffnung auf eine bessere Welt nicht unbegründet ist :-) &#x1F603
 Ich formuliere zu diesem Zweck eine These zur Qualifizierbarkeit von Fortschritt und beschreibe ein Instrument, den Metamux Kompass,
-welches uns dabei helfen kann den Fortschritt am richtigen Ort zu suchen. [There is an english version of this article].
+welches uns dabei helfen kann den Fortschritt am richtigen Ort zu suchen.
+
+Hint: There is an [english version of this article].
 
 Vorab ein kurzer Hinweis zum Hintergrund dieses Beitrags: In einem [vorgängigen Artikel] habe ich über die Zusammenhänge und Wechselwirkungen zwischen
 Privatheit, Autonomie und Demokratie geschrieben. Dabei habe ich auch postuliert, dass sich Autonomie, Demokratie und Zivilisierungsniveau
@@ -31,13 +33,13 @@ Stützpfeiler einer Gesellschaft ausgerichtet.
 
 Da sich Fortschritt hier über die Verbesserung des Zustands der Stützpfeiler definiert, ist zur Kalibrierung
 des Metamux Kompass lediglich die Auswahl der Stützpfeiler notwendig. Die Auswahl der Stützpfeiler
-erfolgt dabei auf der individuellen Ebene. Jede wählt diese nach eigenem Ermessen aus und kalibriert den Kompass so für sich selbst.
+erfolgt dabei auf der individuellen Ebene. Jede Person wählt diese nach eigenem Ermessen aus und kalibriert den Kompass so für sich selbst.
 Der effektive Manifestationsgrad der Stützpfeiler ist für deren Auswahl irrelevant, da sich ja die Gesellschaft der Zukunft durchaus auch
 auf emergenten oder heute noch gänzlich unbekannten Werten, Konzepten oder Kulturpraktiken abstützen könnte.
 
 Eine beispielhafte Auswahl von essentiellen gesellschaftlichen Stützpfeilern könnte wie folgt aussehen:
-- Autonomie (d.h. Selbstbestimmung) des Individuums
-- Legitimierte Macht über demokratische Prozesse
+- Selbstbestimmung des Individuums (Autonomie)
+- Legitimierte Macht durch demokratische Prozesse
 - Gleichheit der Individuen, frei von Diskriminierung
 - Nachhaltige Lebensführung
 - Solidarität
@@ -53,8 +55,8 @@ Die Verdichtung der individuellen Selektionen auf die gesellschaftliche Ebene ka
 Mit dem Setzen von Schutzzonen um die Stützpfeiler können diese von Experimentierfeldern abgegrenzt werden, in welchen
 Disruption eingeschränkt stattfinden kann.
 
-Wendet man den Metamux Kompass an, so kann man durchaus auf Erkenntnisse stossen, die auf Anhieb erstaunlich erscheinen mögen. Es lohnt sich aber,
-gerade diese Erkenntnisse genauer zu analysieren um sie besser verstehen zu können.
+Wendet man den Metamux Kompass an, so kann man durchaus auf Erkenntnisse stossen, die auf Anhieb erstaunlich oder sogar beunruhigend erscheinen mögen.
+Es lohnt sich aber, gerade diese Erkenntnisse genauer zu analysieren um sie besser verstehen zu können.
 
 Benutzt man beispielsweise die vorgängig erwähnte beispielhafte Auswahl von Stützpfeilern, dann kann man damit zum Schluss kommen,
 dass alleine die gesellschaftliche Akzeptanz einer neuen Technologie oder Kulturtechnik nicht hinreichend ist, um besagte Technologie/Kulturtechnik
