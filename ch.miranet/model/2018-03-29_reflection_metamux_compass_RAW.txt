@@ -2,7 +2,7 @@ Der Metamux Kompass - Ein ethischer Kompass für Fortschritt
 
 In diesem Beitrag möchte ich aufzeigen, dass die Hoffnung auf eine bessere Welt nicht unbegründet ist :-) &#x1F603
 Ich formuliere zu diesem Zweck eine These zur Qualifizierbarkeit von Fortschritt und beschreibe ein Instrument, den Metamux Kompass,
-welches uns dabei helfen kann den Fortschritt am richtigen Ort zu suchen.
+welches dabei helfen kann den Fortschritt am richtigen Ort zu suchen.
 
 Hint: There is an [english version of this article].
 
@@ -56,10 +56,8 @@ Mit dem Setzen von Schutzzonen um die Stützpfeiler können diese von Experiment
 Disruption eingeschränkt stattfinden kann.
 
 Wendet man den Metamux Kompass an, so kann man durchaus auf Erkenntnisse stossen, die auf Anhieb erstaunlich oder sogar beunruhigend erscheinen mögen.
-Es lohnt sich aber, gerade diese Erkenntnisse genauer zu analysieren um sie besser verstehen zu können.
-
-Benutzt man beispielsweise die vorgängig erwähnte beispielhafte Auswahl von Stützpfeilern, dann kann man damit zum Schluss kommen,
-dass alleine die gesellschaftliche Akzeptanz einer neuen Technologie oder Kulturtechnik nicht hinreichend ist, um besagte Technologie/Kulturtechnik
+Es lohnt sich aber, gerade diese Erkenntnisse genauer zu analysieren um sie besser verstehen zu können. Alleine die gesellschaftliche Akzeptanz einer
+neuen Technologie oder Kulturtechnik ist nicht hinreichend, um besagte Technologie/Kulturtechnik
 als fortschrittlich zu qualifizieren. Dies ist beispielsweise dann der Fall, wenn die Akzeptanz lediglich in der Mode der Zeit gründet.
 Oder auch dann, wenn die Akzeptanz primär durch Angst getrieben ist, beispielsweise die Angst vor dem Verlust von Wettbewerbsfähigkeit.
 
